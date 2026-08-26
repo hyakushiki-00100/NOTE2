@@ -37,7 +37,7 @@ model: inherit
   python3 -c "
 import re,sys
 t = open(sys.argv[1]).read()
-body = '\n'.join(l for l in t.splitlines() if not l.lstrip().startswith(('#','※','【','-','\`')))
+body = '\n'.join(l for l in t.splitlines() if not l.lstrip().startswith(('#','※','📎','【','-','\`')))
 sentences = [s for s in re.split('[。!?]', body) if s.strip()]
 lens = [len(s) for s in sentences]
 long_ones = [s for s in sentences if len(s) > 60]
@@ -53,10 +53,12 @@ for s in long_ones[:5]: print(' -', s.strip()[:80])
 - **末尾に「参照した情報」節を置き、媒体名と URL を列挙する**(地の文=読みやすさ、末尾リスト=検証可能性)。
 - 分量は記事の位置づけ(無料/有料)に応じて決め、字数はコードで確認:
   ```bash
-  python3 -c "import sys,re;t=open(sys.argv[1]).read();b=''.join(l for l in t.splitlines() if not l.lstrip().startswith(('#','※')));print('chars:',len(re.sub(r'\s','',b)))" article.md
+  python3 -c "import sys,re;t=open(sys.argv[1]).read();b=''.join(l for l in t.splitlines() if not l.lstrip().startswith(('#','※','📎')));print('chars:',len(re.sub(r'\s','',b)))" article.md
   ```
-- **どこに解説イラストが要りそうか、執筆時にメモを残す**(`illustrator` に渡す)。例: 「[イラスト案: 音波が
-  近づく/遠ざかるときの波の間隔の違い]」のように本文中にコメントを残し、整形前に取り除く。
+- **どこに解説イラストが要りそうか、執筆時にメモを残す**(`illustrator` に渡す)。
+  `📎(ここに illustrations/<ファイル名> を挿入: 音波が近づく/遠ざかるときの波の間隔の違い)` のように、
+  ファイル名が未定の段階でも 📎 記法で本文中に残す。**`illustrator` が画像を作った後、ファイル名を実際の
+  パスに更新する。この 📎 行は note に貼り付ける前に必ず実画像へ差し替える**(`note-qa` が残存を確認する)。
 
 ## 「AIっぽさ」を消す
 AI が書いたように見えると、「先生が語りかけている」という親しみが失われる。以下は好みではなく要件とする。
