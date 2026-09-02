@@ -9,9 +9,9 @@
 | 成果物 | 状態 |
 |---|---|
 | プロフィールアイコン | ✅ 既存のものを流用(記事ごとに作り直さない) |
-| 記事カバー | ✅ 生成済み(`covers/coriolis-no-chikara.png`)。回転矢印の向きがやや曖昧という指摘あり(FAILではないが余裕があれば修正推奨、下記参照) |
-| 解説イラスト1(回転する台の上のボール) | ⚠️ 生成済みだが Opus QA で FAIL(曲がる向きが本文と逆)。下記の修正版プロンプトで**再生成が必要** |
-| 解説イラスト2(台風の渦の図解) | ⚠️ 生成済みだが Opus QA で FAIL(矢印が両端矢じりで向き不定)。下記の修正版プロンプトで**再生成が必要** |
+| 記事カバー | ⚠️ 生成済みだが Opus QA で FAIL(回転矢印が上下とも左向きで内部矛盾)。下記の修正版プロンプトで**再生成が必要** |
+| 解説イラスト1(回転する台の上のボール) | ✅ 再生成済み・Opus QA PASS(`illustrations/coriolis-no-chikara-01.png`、画素解析まで実施して向きを確認済み) |
+| 解説イラスト2(台風の渦の図解) | ✅ 再生成済み・Opus QA PASS(`illustrations/coriolis-no-chikara-02.png`、8本すべて画素解析で反時計回りの単方向矢印であることを確認済み) |
 | 解説イラスト3(台風とお風呂のスケール比較) | ✅ 生成済み・QA PASS(`illustrations/coriolis-no-chikara-03.png`) |
 
 ---
@@ -28,9 +28,11 @@ to: cream background (#FBF3E4), terracotta orange (#E08454, shadow #BF673C), dee
 
 ---
 
-## 1. 記事カバー
+## 1. 記事カバー 【要再生成・修正版】
 
 タイトルは確定済み。画像内に焼き込んでください。
+
+**修正理由(Opus QAで指摘・FAIL)**: 旧版は地球の上下にある2本のオレンジ矢印が両方とも矢じりが左端を向いていた。1本の円形矢印として読むと上下で逆回転を意味し内部矛盾。「見えている面が左へ動く」と読んでも西向き自転になり、地球の実際の自転(東向き)と逆に読める。
 
 ```
 A wide horizontal illustration (aspect ratio approximately 16:8.4), flat warm children's book style.
@@ -39,13 +41,20 @@ typhoon cloud pattern near it (simple spiral shape, not photorealistic weather i
 small bathroom sink/tub icon with a tiny drain swirl on the other side, suggesting a playful
 comparison between the two. Both swirls should be clearly readable as simple spiral icons, not
 literal weather photography.
+CRITICAL for the globe's rotation indicator: use a SINGLE continuous curved arrow that wraps around
+the visible face of the globe (for example along the equator), with exactly ONE arrowhead at one end
+and a plain tail at the other end — do NOT draw two separate arrows on the top and bottom of the
+globe, since that reads as contradictory/ambiguous rotation. The single arrow's direction should
+represent the globe spinning so that, on the visible (near) side facing the viewer, the surface
+moves to the right (eastward) — i.e. the arrowhead should be on the right side of the visible face,
+tail on the left.
 [共通スタイル指定を貼り付け]
 Include a title at the top of the image in bold, clearly legible Japanese text: 「台風の渦はなぜ「左回り」? コリオリの力と、お風呂の渦のウソ・ホント」. The title text must be crisp, correctly formed Japanese characters (not garbled), sized to fit on 2–3 lines, in the dark brown color (#483628), positioned with calm uncluttered space behind it so it doesn't overlap the illustration below.
 ```
 
-**注意**: タイトルがやや長い(34字)ため、2〜3行に収まるようレイアウトの調整が必要になる可能性があります。生成後、文字が窮屈になっていないか確認してください。
+**注意**: タイトルがやや長い(34字)ため、2〜3行に収まるようレイアウトの調整が必要になる可能性があります。生成後、文字が窮屈になっていないか確認してください。台風の渦・洗面台の渦の巻き方はこの旧版で確認済み(北半球型で正しい)なので、その部分は変えないでください。
 
-**任意の修正(FAILではないが余裕があれば)**: Opus QAで、地球の上下にある回転矢印が両方とも矢じりが左端を向いており、平面の記号として見ると上下で逆回転に見えかねないと指摘された。再生成する場合は、プロンプトに次の一文を足すとよい: `The rotation indicator should be a single continuous curved arrow wrapping around the globe with one arrowhead, not two separate arrows on the top and bottom.`
+**生成後の確認ポイント**: 回転矢印が1本の円弧(矢じりも1つ)になっているか。上下に別々の矢印が生えていたら失敗、作り直す。
 
 ---
 
