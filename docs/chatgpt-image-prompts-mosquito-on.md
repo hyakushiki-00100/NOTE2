@@ -9,11 +9,11 @@
 
 | 成果物 | 状態 |
 |---|---|
-| プロフィールアイコン | 既存の `profile/icon.png`(500×500)をそのまま流用。作り直さない |
-| 記事カバー | 未生成。下記プロンプトで生成待ち |
-| 解説イラスト1(可聴範囲とモスキート音の位置) | 未生成。下記プロンプトで生成待ち |
-| 解説イラスト2(蝸牛断面図・入り口=高音/奥=低音) | 未生成。下記プロンプトで生成待ち |
-| 解説イラスト3(公園の装置と若者/大人の対比) | 未生成。下記プロンプトで生成待ち |
+| プロフィールアイコン | ✅ 既存の `profile/icon.png`(500×500)をそのまま流用 |
+| 記事カバー | ✅ 生成済み・Opus QA PASS(`covers/mosquito-on.png`) |
+| 解説イラスト1(可聴範囲とモスキート音の位置) | ✅ 生成済み(`illustrations/mosquito-01-hearing-range.png`)。星の位置がやや左寄りという軽微な指摘あり(FAILではない、任意で再生成可) |
+| 解説イラスト2(蝸牛断面図・入り口=高音/奥=低音) | ✅ 生成済み・Opus QA PASS(`illustrations/mosquito-02-cochlea.png`) |
+| 解説イラスト3(公園の装置と若者/大人の対比) | ⚠️ 生成済みだが Opus QA で FAIL(ラベル「おとなには聞こえない」が本文の「聞こえにくい」と矛盾)。下記の修正版プロンプトで**再生成が必要** |
 
 ---
 
@@ -54,11 +54,15 @@ Include a title at the top of the image in bold, clearly legible Japanese text: 
 
 ---
 
-## 2. 解説イラスト1: 人の可聴範囲とモスキート音の位置関係
+## 2. 解説イラスト1: 人の可聴範囲とモスキート音の位置関係 【任意の修正・余裕があれば再生成】
 
 本文該当箇所(L16〜26)の要旨: 人が聞き取れる音の高さは、だいたい20ヘルツ〜20,000ヘルツ(20キロヘルツ)。
 モスキート音は、その範囲の中でもかなり上の方、17,000ヘルツ(17キロヘルツ)前後の高い音。
 **注意**: モスキート音は可聴範囲の「外」ではなく、範囲の中の「かなり上のほう」に位置する(本文に忠実に)。
+
+**修正理由(Opus QAで指摘・FAILではなく任意)**: 生成済みの版は星の位置が線形目盛でいう17,000Hz相当の位置より
+やや左(帯の78%付近、本来は85%付近)にずれていた。目盛線が無いため誤った数値は伝わらないが、より正確にするなら
+下記プロンプトの位置指定を「最後の1/5」から「最後の1/7」程度に寄せて再生成するとよい。
 
 ```
 A single simple illustration, flat warm children's book style: a horizontal rounded bar/ruler shape
@@ -68,12 +72,13 @@ running from left to right. The LEFT end of the bar is clearly labeled in Japane
 entire bar (from left end to right end) should be filled with the light teal color (#92B5AB),
 representing the whole range a person can hear.
 CRITICAL for placement: mark ONE clear point/star icon ON the bar, positioned close to the RIGHT
-(high) end but with a small visible gap before the very right edge — roughly in the last one-fifth
-of the bar's length, clearly still inside the teal bar, not outside it and not at the exact right
-tip. Draw a short leader line from this point up to a small label box above the bar reading in
-Japanese "モスキート音 17,000ヘルツくらい". Do not place this marker at the far left, at the middle,
-or outside/beyond the right end of the bar — it must read as "high, near the top of the range, but
-still within the range".
+(high) end but with a small visible gap before the very right edge — roughly at 85% of the bar's
+length from the left end (i.e. in the last one-SEVENTH of the bar, closer to the right tip than a
+simple "last one-fifth" would place it), clearly still inside the teal bar, not outside it and not
+at the exact right tip. Draw a short leader line from this point up to a small label box above the
+bar reading in Japanese "モスキート音 17,000ヘルツくらい". Do not place this marker at the far left,
+at the middle, or outside/beyond the right end of the bar — it must read as "high, near the top of
+the range, but still within the range".
 [共通スタイル指定を貼り付け]
 All Japanese text must be crisp, correctly formed characters (not garbled), large and easy to read
 for children, in the dark brown color (#483628).
@@ -116,11 +121,16 @@ for children, in the dark brown color (#483628).
 
 ---
 
-## 4. 解説イラスト3: 公園の装置と、反応する若者/反応しない大人の対比
+## 4. 解説イラスト3: 公園の装置と、反応する若者/反応しない大人の対比 【要再生成・修正版】
 
 本文該当箇所(L58〜74)の要旨: イギリス発の「モスキート」装置。若い人にだけ聞こえる高い音を出し、夜遅く
 たむろする若者を音で追い払う目的で作られた。日本でも足立区が公園に試験導入した例がある。
 **注意**: 実在の暴力的・威圧的な装置に見せない。怖がらせる表現は避ける(CLAUDE.mdのトーン方針)。
+
+**修正理由(Opus QAで指摘・FAIL)**: 旧版のラベル「おとなには聞こえない」が断定になっており、本文L64「大人には
+聞こえ**にくく**」、およびL52-54「『何歳になったら必ず聞こえなくなる』という単純な話ではありません」「同じ年齢でも、
+よく聞こえる人と、聞こえにくい人がいます」という個人差の明示と矛盾していた。ラベルを本文と同じ「聞こえにくい」に
+修正する。
 
 ```
 A single illustration, flat warm children's book style: a simple park scene at dusk (soft warm
@@ -137,9 +147,13 @@ Keep the mood gentle and a little funny/curious, not threatening — this is a p
 an interesting invention, not an unsettling scene. No realistic weapons, no aggressive imagery.
 [共通スタイル指定を貼り付け]
 Include short Japanese captions rendered clearly and legibly: near the teenagers "若者には聞こえる",
-near the adult "おとなには聞こえない". Text must be crisp, correctly formed Japanese characters (not
-garbled), large and easy to read for children, in the dark brown color (#483628).
+near the adult "おとなには聞こえにくい" (NOT "聞こえない" — the caption must say "hard to hear", not
+an absolute "cannot hear", to match the article's point that hearing loss varies by individual and is
+not an absolute cutoff). Text must be crisp, correctly formed Japanese characters (not garbled),
+large and easy to read for children, in the dark brown color (#483628).
 ```
+
+**生成後の確認ポイント**: 大人側のラベルが「おとなには聞こえにくい」になっているか(「聞こえない」という断定のままなら失敗、作り直す)。若者側「若者には聞こえる」との対比構図・威圧的でないトーンは維持されているか。
 
 **生成後の確認ポイント**: 音波の線が若者側にだけ描かれ、大人側には描かれていない(左右非対称)か。威圧的・怖い印象になっていないか(トーン方針に反しないか)。
 
