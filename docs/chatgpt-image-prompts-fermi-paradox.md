@@ -10,9 +10,9 @@
 | 成果物 | 状態 |
 |---|---|
 | プロフィールアイコン | ✅ 既存の `profile/icon.png`(500×500)をそのまま流用。作り直さない |
-| 記事カバー | ⏳ 未生成(本ドキュメントのプロンプトを ChatGPT に貼り付けて生成する。保存先 `covers/fermi-paradox.png`) |
-| 解説イラスト1(宇宙の年齢・恒星数・銀河の年齢のスケール比較) | ⏳ 未生成(保存先 `illustrations/fermi-paradox-scale.png`。本文L46の📎マーカーに対応) |
-| 解説イラスト2(3つの仮説を対等に並べた図) | ⏳ 未生成(保存先 `illustrations/fermi-paradox-hypotheses.png`。本文L88の📎マーカーに対応) |
+| 記事カバー | ⚠️ 生成済みだが Opus QA で FAIL(1行目タイトルの文字上部が画像上端で切れている)。下記の修正版プロンプトで**再生成が必要** |
+| 解説イラスト1(宇宙の年齢・恒星数・銀河の年齢のスケール比較) | ⚠️ 生成済みだが Opus QA で FAIL(3枚目パネルのキャプションだけでは「銀河横断に100億年以上かかる」と誤読され、本文の「移動時間≪銀河の年齢」という比較の論旨が反転して見える)。下記の修正版プロンプトで**再生成が必要** |
+| 解説イラスト2(3つの仮説を対等に並べた図) | ✅ 生成済み・Opus QA PASS(`illustrations/fermi-paradox-hypotheses.png`) |
 
 ---
 
@@ -28,11 +28,15 @@ to: cream background (#FBF3E4), terracotta orange (#E08454, shadow #BF673C), dee
 
 ---
 
-## 1. 記事カバー
+## 1. 記事カバー 【要再生成・修正版】
 
 本文の核となるフック(星がたくさんあり、時間も十分長いのに、宇宙人からの連絡が一つも無い)と、
 タイトルの見どころ(フェルミ本人は論文もメモも残していない、という意外性)の両方を絵にする。
 タイトルは確定済みなので、そのまま画像内に焼き込む。
+
+**修正理由(Opus QAで指摘・FAIL)**: 旧版は1行目のタイトル文字の上部が画像の上端で切れていた
+(既出3記事のカバーはいずれも上端に余白があり、本カバーだけの退行)。タイトル全体をもう少し
+下げて、上に十分な余白を確保して再生成する。
 
 ```
 A wide horizontal illustration (aspect ratio approximately 16:8.4), flat warm children's book style.
@@ -57,25 +61,36 @@ Line 1: 「宇宙人は、なぜ見つからないの?」
 Line 2: 「フェルミのパラドックス」、
 Line 3: 実は本人は論文もメモも残していない
 This title is long (47 characters total), so keep the font small enough that all 3 lines comfortably
-fit within the image width without touching the edges or overlapping the night-sky scene below. Leave
-calm, uncluttered space (plain cream or dark sky background, no busy stars) directly behind the title
-text so it stays crisp and readable. The title text must be crisp, correctly formed Japanese
-characters (not garbled), in the dark brown color (#483628), positioned in the upper area only.
+fit within the image width without touching the edges or overlapping the night-sky scene below.
+CRITICAL: leave a generous empty margin (at least 8% of the image height) between the very top edge
+of the image and the top of line 1's characters — the title block must NOT start right at the top
+edge, and no part of any character (including diacritical marks like "゛") may be cropped or touch the
+top border. Position the whole 3-line title block starting noticeably below the top edge, with calm,
+uncluttered space (plain cream or dark sky background, no busy stars) directly behind it so it stays
+crisp and readable. The title text must be crisp, correctly formed Japanese characters (not garbled),
+in the dark brown color (#483628).
 ```
 
-**生成後の確認ポイント**: タイトルが3行に収まり、どの行も窮屈になっていないか(47字と長いため特に確認)。
-物理学者キャラクターが実在の人物の写実的な肖像に見えていないか(生成モデルが実在の人物に寄せてしまう
-ことがあるため、あくまで一般的な子ども向けキャラクターになっているか確認)。ノートが「空白」であること
-(=論文もメモも残していない、というタイトルの見どころ)が絵から読み取れるか。宇宙人のシルエットが主役に
-ならず、あくまで背景の小さな遊び要素にとどまっているか。
+**生成後の確認ポイント**: タイトル1行目の文字の上端が画像の一番上で切れていないか(必ず拡大して確認する。
+前回はここが切れていてFAILになった)。タイトルが3行に収まり、どの行も窮屈になっていないか(47字と長いため
+特に確認)。物理学者キャラクターが実在の人物の写実的な肖像に見えていないか(生成モデルが実在の人物に寄せて
+しまうことがあるため、あくまで一般的な子ども向けキャラクターになっているか確認)。ノートが「空白」である
+こと(=論文もメモも残していない、というタイトルの見どころ)が絵から読み取れるか。宇宙人のシルエットが
+主役にならず、あくまで背景の小さな遊び要素にとどまっているか。
 
 ---
 
-## 2. 解説イラスト1: 宇宙の年齢・天の川銀河の恒星の数・銀河の年齢のスケール比較
+## 2. 解説イラスト1: 宇宙の年齢・天の川銀河の恒星の数・銀河の年齢のスケール比較 【要再生成・修正版】
 
 本文該当箇所(L44〜66)の要旨: 宇宙が誕生してから約138億年。天の川銀河には1000億〜4000億個もの星がある。
 銀河の年齢は100億年以上あり、銀河の端から端まで移動するのに何百万年かかっても、その長さと比べれば短い。
 これだけの時間と数があるのに、誰も来ていない・電波も届いていない、という不思議につながる図。
+
+**修正理由(Opus QAで指摘・FAIL)**: 旧版のカード3(ロケット+目盛りバー+「銀河の年れい 100億年よりも長い」の
+キャプションのみ)は、本文の「移動には何百万年かかるが、銀河の年齢100億年以上と比べれば短い」という**2つの
+数字の比較**を表現できておらず、「銀河を横断するのに100億年以上かかる」という逆の意味に誤読されかねなかった。
+カード3には、移動にかかる時間(何百万年)と銀河の年齢(100億年以上)の**両方の数字**を、ロケットの移動距離が
+バー全体のごく一部でしかないと分かる形で描き直す。
 
 **重要(本文にない数値を追加しない)**: 元の📎マーカーには「地球の年齢」も並べる案があったが、
 本文の確定稿には地球の年齢の具体的な数値は一切書かれていない(本文が挙げる時間の数値は「宇宙の年齢:約138億年」
@@ -106,11 +121,17 @@ arms), filled with many tiny dot-stars along its arms, clearly showing "a huge n
 inside one spiral galaxy shape. Caption directly below, in Japanese:
 "天の川銀河の星の数　1000億〜4000億こ".
 
-Card 3 (rightmost): the same simple spiral galaxy shape as Card 2 (to visually link it to the same
-galaxy), but this time with a small simple rocket/spaceship icon shown partway along one spiral arm,
-and a long simple timeline bar underneath the galaxy shape spanning the full width of the card.
-Caption directly below, in Japanese: "銀河の年れい　100億年よりも長い".
-Do NOT put a specific number of years for Earth's age anywhere in this image — only use the 3 Japanese
+Card 3 (rightmost): a long simple horizontal timeline bar spanning the full width of the card,
+representing the galaxy's age. Near the very LEFT end of this long bar only, draw a tiny short
+highlighted segment (a small distinctly-colored short stretch, visually a very small fraction — no
+more than roughly 5% — of the bar's total length) with a small rocket/spaceship icon next to that
+short segment, and a small leader line from that short segment up to a caption reading in Japanese
+"はしっこまで移動:何百万年". Below the FULL long bar (spanning its entire width), add a second
+caption reading in Japanese "銀河の年れい:100億年よりも長い". The visual point is that the rocket's
+journey occupies only a tiny sliver at one end of the bar, while the whole bar represents a vastly
+longer span — do NOT make the rocket's segment look like it spans a large or comparable portion of
+the bar.
+Do NOT put a specific number of years for Earth's age anywhere in this image — only use the Japanese
 captions given above, exactly as written, and no other numeric labels.
 
 [共通スタイル指定を貼り付け]
@@ -120,9 +141,11 @@ so no single card looks more important than the others.
 ```
 
 **生成後の確認ポイント**: 3枚のカードの数値ラベルが、それぞれ対応する絵(バースト=宇宙の年齢、渦巻銀河の
-星々=恒星数、渦巻銀河+ロケット+タイムラインバー=銀河の年齢)と正しく対応しているか(取り違えていないか)。
-本文に無い「地球の年齢」の具体的な年数が描き加えられていないか。3枚のカードのサイズ・扱いが均等で、
-どれか1枚だけが目立つ構成になっていないか。
+星々=恒星数、カード3のタイムラインバー=銀河の年齢)と正しく対応しているか(取り違えていないか)。
+**カード3で、ロケットの移動区間がバー全体のごく一部(端のわずかな区間)にしか見えず、「移動は短い・
+銀河の年齢は長い」という対比が一目で伝わるか**(前回のFAILの再発防止として最重要)。本文に無い「地球の年齢」
+の具体的な年数が描き加えられていないか。3枚のカードのサイズ・扱いが均等で、どれか1枚だけが目立つ構成に
+なっていないか。
 
 ---
 
