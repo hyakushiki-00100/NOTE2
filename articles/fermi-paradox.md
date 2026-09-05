@@ -23,7 +23,7 @@
 
 「みんな、どこにいるんだ?」
 
-宇宙人は、なぜ地球に来ていないのか。突然そう聞かれて、その場にいた人たちは面食らったといいます。
+藪から棒の質問だったのに、その場にいた全員が、フェルミの言う「みんな」が宇宙人のことだと、すぐに分かったそうです。そのちぐはぐさがおかしくて、どっと笑いが起きたと伝えられています。
 
 フェルミ自身は、この疑問について論文や書き残したメモを残していません。
 
@@ -39,7 +39,9 @@
 
 天文学者マイケル・ハートが1975年に発表した論文が最初だとされています。
 
-フェルミが残したのは、あくまで「どこにいるんだ?」という一言の疑問符だったようです。
+その場でフェルミは、地球のような星がどれくらいありそうか、生命が生まれる確率はどれくらいかといった数字を、次々に口頭で挙げていったといいます。そのうえで「だとしたら、とっくに何度も訪問されていてもおかしくない」と結論づけた、と関係者は振り返っています。
+
+ただし、これらはすべてその場限りの口頭でのやり取りにとどまり、論文や書面としては一切残されませんでした。
 
 ## 数字で見ると、確かに不思議
 
@@ -115,9 +117,11 @@
 - Universe Today「Beyond "Fermi's Paradox" I: A Lunchtime Conversation - Enrico Fermi and Extraterrestrial Intelligence」 https://www.universetoday.com/articles/beyond-fermis-paradox-i-a-lunchtime-conversation-enrico-fermi-and-extraterrestrial-intelligence
 - Eric M. Jones, Los Alamos National Laboratory report「"Where Is Everybody?": An Account of Fermi's Question」(1985) https://www.osti.gov/servlets/purl/5746675/
 - Robert H. Gray「The Fermi Paradox Is Neither Fermi's Nor a Paradox」Astrobiology, 2015 https://arxiv.org/abs/1605.09187
+- Big Think「The Fermi paradox was created by geniuses during a strange debate over lunch」 https://bigthink.com/hard-science/fermi-paradox-geniuses-lunchtime-debate/
 - 日本語版 Wikipedia「フェルミのパラドックス」 https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9F%E3%81%AE%E3%83%91%E3%83%A9%E3%83%89%E3%83%83%E3%82%AF%E3%82%B9
 - NASA Science「Our Milky Way Galaxy: How Big is Space?」 https://science.nasa.gov/universe/exoplanets/our-milky-way-galaxy-how-big-is-space/
 - NASA Blueshift「How Many Stars in the Milky Way?」 https://asd.gsfc.nasa.gov/blueshift/index.php/2015/07/22/how-many-stars-in-the-milky-way/
+- Space.com「Milky Way's Age Narrowed Down」 https://www.space.com/263-milky-age-narrowed.html
 - 理科年表オフィシャルサイト「宇宙の年齢が1億年延びた? 2014年版」(プランク衛星, 2013年結果) https://official.rikanenpyo.jp/posts/6283
 - 日本語版 Wikipedia「宇宙の年齢」 https://ja.wikipedia.org/wiki/%E5%AE%87%E5%AE%99%E3%81%AE%E5%B9%B4%E9%BD%A2
 - 日本語版 Wikipedia「ドレイクの方程式」 https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%AC%E3%82%A4%E3%82%AF%E3%81%AE%E6%96%B9%E7%A8%8B%E5%BC%8F
@@ -127,9 +131,10 @@
 - Astronomy.com「The Great Filter: A possible solution to the Fermi Paradox」 https://www.astronomy.com/science/the-great-filter-a-possible-solution-to-the-fermi-paradox/
 
 ※ この環境ではネットワークの制約により、上記URLへの直接アクセス(WebFetch)の多くが遮断されており、本文の内容は検索エンジン(WebSearch)が返した要約・抜粋を通じて複数の独立した情報源を突き合わせて確認したものです。原文そのものの一字一句までは確認できていません。
-※ 「1950年のロスアラモスでの昼食時のやり取り」については、Universe Todayの記事と、その記事が根拠とするEric Jonesの1985年のロスアラモス国立研究所報告書(1984年に存命だった関係者3名への聞き取りをまとめたもの)を突き合わせて確認しました。フェルミ本人による論文・書面の記録は存在しないという点は、Robert H. Gray氏の2015年の学術論文(Astrobiology誌掲載、arXivでも公開)が明示的に指摘している内容です。この論文の原文全体には今回アクセスできておらず、要約・抜粋を通じた確認にとどまります。
+※ 「1950年のロスアラモスでの昼食時のやり取り」については、Universe Todayの記事、Big Thinkの記事、そしてこれらの記事が根拠とするEric Jonesの1985年のロスアラモス国立研究所報告書(1984年に存命だった関係者3名=エドワード・テラー、エミール・コノピンスキー、ハーバート・ヨークへの聞き取りをまとめたもの)を突き合わせて確認しました。「その場の全員がすぐに宇宙人の話だと理解して笑いが起きた」というテラー氏の証言、「フェルミがその場で確率の見積もりを重ね、"とっくに訪問されているはずだ"と結論づけた」というヨーク氏の証言は、いずれもこの報告書にもとづくものとして複数の記事が共通して伝えています。フェルミ本人による論文・書面の記録は存在しないという点は、Robert H. Gray氏の2015年の学術論文(Astrobiology誌掲載、arXivでも公開)が明示的に指摘している内容です。これらの論文・報告書の原文全体には今回アクセスできておらず、複数の紹介記事を通じた確認にとどまります。
 ※ 「いない証拠をもって、いないと結論づける」形の主張を最初に定式化したのがマイケル・ハート(1975年の論文)である、という点も、同じくGray氏の論文の指摘によります。ハート氏の1975年論文そのものには今回当たれていません。
 ※ 天の川銀河の恒星数(1000億〜4000億個)は、NASA Scienceの公式解説ページとNASA Blueshiftの解説記事を突き合わせたものです。観測手法の限界により推定に幅があること自体も、これらの記事内で説明されています。
+※ 天の川銀河の年齢(100億年以上)は、Space.comの記事で紹介されている推定(約136億年、前後8億年程度の誤差)にもとづき、誤差を考慮しても安全に言える下限として「100億年以上」という表現にとどめました。研究によって推定値に幅がある(100億〜140億年程度)ことも、この記事内で説明されています。
 ※ 宇宙の年齢(138億年)は、欧州宇宙機関(ESA)のプランク衛星による2013年の観測結果によるもので、複数の日本語記事(理科年表オフィシャルサイト等)を通じて確認しました。ESA公式発表の原文そのものには今回アクセスできていません。
 ※ ドレイクの方程式の詳細(1961年・グリーンバンク・参加者12名程度)は、日本語版Wikipedia、アストロアーツの追悼記事など複数の情報源で共通して確認できた内容です。
 ※ 「グレートフィルター」がロビン・ハンソン氏により1990年代に提唱されたという点は、本人のウェブページとAstronomy.comの解説記事の両方で確認しましたが、提唱時期の厳密な年は情報源によって表現に幅があり、「1990年代」という範囲での記述にとどめています。
