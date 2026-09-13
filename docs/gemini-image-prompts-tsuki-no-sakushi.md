@@ -12,15 +12,18 @@
 | 成果物 | 状態 |
 |---|---|
 | プロフィールアイコン | ✅ 既存の `profile/icon.png`(500×500・正方形、確認済み)をそのまま流用。作り直さない |
-| 記事カバー | ❌ 1回目生成→計測の結果、月の直径が約370px対約137px(約2.7倍差)で不合格。プロンプトを修正済み。再生成待ち(`covers/tsuki-no-sakushi.png`) |
-| 解説イラスト1(比較対象説: 地平線の月と目印/夜空高くの月の対比) | ❌ 1回目生成→計測の結果、月の直径が約188px対約171px(約9%差)で不合格。加えて左パネルの月に「M」の文字が誤って焼き込まれた。プロンプトを修正済み。再生成待ち(`illustrations/tsuki-hikaku-taisho.png`) |
-| 解説イラスト2(見かけの距離説: ポンゾ錯視の図) | ❌ 1回目生成→計測の結果、棒の幅が約287px対約566px(約2倍差)で不合格。原因はプロンプト自体の矛盾(「同じ長さ」と「線の間を隙間なく埋める」を同時要求)。プロンプトを修正済み。再生成待ち(`illustrations/ponzo-sakushi.png`) |
+| 記事カバー | ❌ 1回目生成→計測の結果、月の直径が約370px対約137px(約2.7倍差)で不合格。プロンプトを簡潔化・番号付きリスト排除して修正済み(Geminiが連続生成して止まらない不具合の報告もあったため)。再生成待ち(`covers/tsuki-no-sakushi.png`) |
+| 解説イラスト1(比較対象説: 地平線の月と目印/夜空高くの月の対比) | ✅ 2回目生成で合格・保存済み(`illustrations/tsuki-hikaku-taisho.png`、1200×670)。計測の結果、月の直径は左134px・右135pxでほぼ完全一致。「M」の誤字も消えた |
+| 解説イラスト2(見かけの距離説: ポンゾ錯視の図) | ✅ Geminiでの生成が2回とも棒の長さを一致させられなかったため、方針転換してPythonで直接描画。保存済み(`illustrations/ponzo-sakushi.png`、1200×720、棒の長さは260px/260pxで完全一致) |
 | 解説イラスト3(太陽でも同じ現象が起きる対比) | 🔲 プロンプト作成済み・生成待ち(`illustrations/taiyou-sakushi.png`) |
 
 カバー・イラスト1・イラスト2は1回目の生成物をピクセル計測で検証した結果、いずれも「同じ大きさ」という
 本文の核心と矛盾する不一致が見つかったため不合格とし、プロンプトを修正した(詳細は各セクション参照)。
-生成後は目視だけでなく、下記「生成後のチェックリスト」に沿ってコードで計測・検証し、Opus QA(`note-qa`)
-にかけること。
+イラスト1は2回目の修正版プロンプトで合格したが、イラスト2(ポンゾ錯視)は2回目もGeminiが「同じ長さ」を
+守れなかったため、生成AIに頼らずPythonで直接描画する方式に切り替えた(このイラストは幾何学的な正確さが
+本質的に必要なため、コードで描く方が確実)。カバーは引き続きGeminiでの再生成を試すが、この方式でも
+うまくいかない場合は同様にコード生成へ切り替える。生成後は目視だけでなく、下記「生成後のチェックリスト」
+に沿ってコードで計測・検証し、Opus QA(`note-qa`)にかけること。
 
 ---
 
@@ -59,6 +62,12 @@ print(len(t))
 見える。でもカメラで撮って比べると、大きさはほとんど同じ。しかもその理由は、実はまだはっきり解明
 されていない)を絵にする。タイトルは確定済みなので、そのまま画像内に焼き込む。
 
+**注意(Geminiの暴走生成について)**: このプロンプトを投げると Gemini が何枚も連続で生成して
+止まらなくなる、という報告があったため、番号付きリスト形式だった「5行への分割案」を地の文の
+説明に書き換え、`CRITICAL` の強調も1箇所に減らして全体を短くした(番号付きの箇条書きが「複数の
+画像を作る指示」と誤解された可能性を考えた修正)。それでも同様の挙動が起きる場合は、この
+コードブロックの内容だけを1回で貼り付け、続けて別の指示を同じメッセージに含めないようにしてほしい。
+
 **注意(事実の取り扱い・トーンの整合)**:
 - カバーは「地平線近くの月は大きく見える/空高くの月は小さく見える」という**現象そのもの**を描く
   ことに徹し、原因の説明(比較対象説・ポンゾ錯視・見かけの距離説)には踏み込まない(それらは解説
@@ -69,56 +78,29 @@ print(len(t))
   大きさの差にはしない。地平線側は大きめ、空高く側は小さめ、程度の穏やかな対比にとどめる)。
 
 ```
-A wide horizontal illustration (aspect ratio approximately 16:8.4), flat warm children's book style.
-The lower half of the composition shows a warm evening horizon: a simple, gentle silhouette of low
-hills, a few simple trees, and one or two small simple house/building shapes along the horizon line,
-in dark brown (#483628) or deep teal (#3A6960) flat silhouette. Just above this horizon silhouette,
-place ONE large, warm terracotta-orange (#E08454) circular moon shape (simple flat icon, soft rounded
-edge, no realistic craters, maybe a few simple soft crater dots) — this moon should look impressively
-big and inviting, sitting low and close to the horizon silhouette.
+A single wide horizontal illustration, flat warm children's book style. Lower half: a warm evening
+horizon with a simple gentle silhouette of low hills, a few trees, and one or two small houses, in
+dark brown (#483628) or deep teal (#3A6960) flat silhouette, with one large terracotta-orange
+(#E08454) circular moon (simple flat icon, soft rounded edge, a few soft crater dots, no realistic
+photo texture) sitting low and close to the horizon. Upper half: a plain deep-teal (#3A6960) night
+sky filling the entire upper half from edge to edge (not a small cloud or bubble shape), with a few
+cream star dots, containing a second moon high up in a paler cream/light-teal tone (#92B5AB).
 
-The upper half of the composition is a calm deep-teal (#3A6960) night sky, spanning the FULL width
-of the image (a plain flat-colored area, NOT a small isolated cloud or blob shape), with a few small
-simple cream-colored star dots scattered around. High up in this night sky, place a SECOND moon
-shape, in a paler cream/light-teal tone (#92B5AB) to suggest it looks smaller and less vivid against
-the open sky.
-
-CRITICAL — exact size match: both moons must have EXACTLY the same diameter in pixels, as if cut
-from the same circular stencil. As a concrete target, make each moon's diameter approximately 14%
-of the image's total width, and make sure both moons match this same size — do not draw the sky
-moon any smaller than the horizon moon just because it is farther away or higher up. Do not draw
-the two moons touching or overlapping; keep them as two clearly separate moons in two different
-parts of the sky. Do not write any letter, number, or label on or near either moon (no "M", no size
-markers) — each moon is a plain colored circle with a soft brown outline and a few soft crater dots
-only.
-
-Add one small, simple, curious character silhouette (a small round head shape, no realistic face,
-just a simple round shape with a small "?" mark floating near it) positioned small and secondary
-somewhere in the lower part of the scene, looking up at the horizon moon with a curious, wondering
-pose — to evoke "why does it look so different?" without answering the question. Keep this character
-small and clearly secondary to the two moons, which are the main visual focus.
+Both moons must be exactly the same diameter — about 14% of the image width each, like two circles
+cut from the same stencil — do not draw the sky moon smaller just because it sits higher up, and do
+not write any letter or number on or near either moon. Add one small, simple curious character
+silhouette (a round head shape, no realistic face, a small "?" floating near it) low in the scene,
+looking up at the horizon moon, small and clearly secondary to the two moons.
 
 [共通スタイル指定を貼り付け]
 
-Include a title at the top of the image in bold, clearly legible Japanese text:
-「地平線の月はなぜ大きい? 「月の錯視」は写真に撮るとほとんど同じ大きさ、実は原因がまだ解明されていない」.
-CRITICAL — this title is 51 characters, noticeably longer than a short headline, so it must be laid
-out across 5 LINES with a font size small enough to comfortably fit without crowding or overlapping
-the illustration below. Suggested natural phrase breaks (5 lines):
-line 1: 「地平線の月はなぜ大きい?」
-line 2: 「「月の錯視」は写真に撮ると」
-line 3: 「ほとんど同じ大きさ、」
-line 4: 「実は原因が」
-line 5: 「まだ解明されていない」
-If 5 lines still feel crowded given the font size, 6 lines with similarly natural phrase breaks is
-also acceptable — do not force it onto 2–4 lines, as the font would become too large or the text
-would overflow or overlap the illustration below. CRITICAL: leave a clear, generous empty margin
-between the very top edge of the image and the top of line 1's characters (at least 6% of the image
-height) — no part of any character may touch or be cropped by the top edge. The title text must be
-crisp, correctly formed Japanese characters (not garbled — pay special attention to the nested
-「」quotation marks around 月の錯視 and to the "?" and "、" punctuation), in the dark brown color
-(#483628), positioned in the upper area (over the night sky) with calm, uncluttered space behind it
-so it does not overlap the horizon-and-moons illustration below.
+Add a bold, clearly legible Japanese title across the top of the image, over the night sky, in the
+dark brown color (#483628), broken naturally into five short lines: 地平線の月はなぜ大きい? / 「月の
+錯視」は写真に撮ると / ほとんど同じ大きさ、/ 実は原因が / まだ解明されていない. Use a font size small
+enough that all five lines sit comfortably without crowding, overlapping each other, or overlapping
+the illustration below, with a calm empty margin above line 1 and behind the whole title block. The
+nested 「」marks around 月の錯視 and the "?" and "、" punctuation must render as crisp, correct
+Japanese characters.
 ```
 
 **生成後の確認ポイント**: タイトルが5〜6行に収まり、文字が窮屈になっていないか(2〜4行に詰め込まれて文字が小さすぎたり、はみ出したりしていないか)。ネストした鉤括弧「「月の錯視」」や「?」「、」が正しく描画されているか拡大して確認。地平線近くの大きい月と空高くの小さく見える月が、実際には**同じ大きさの円**で描かれているか(**要ピクセル計測**。1回目の生成では約370px対約137pxと約2.7倍もの差があり、目視だけでは見落としていた。定規代わりにPythonで直径を測って必ず数値で確認する)。空側の月が孤立した雲・吹き出しのような区画に閉じ込められておらず、上半分全体が単色の夜空になっているか確認。月やその近くに「M」等の文字・記号が誤って書き込まれていないか確認。特定の説(比較対象・ポンゾ・見かけの距離)を示す図解要素が紛れ込んでいないか確認(カバーは現象の提示のみに留める)。月の絵柄がリアルな天体写真調になっていないか(可愛いフラットアイコンになっているか)確認。
