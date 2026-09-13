@@ -12,12 +12,15 @@
 | 成果物 | 状態 |
 |---|---|
 | プロフィールアイコン | ✅ 既存の `profile/icon.png`(500×500・正方形、確認済み)をそのまま流用。作り直さない |
-| 記事カバー | 🔲 プロンプト作成済み・Gemini での生成待ち(`covers/tsuki-no-sakushi.png` として保存予定) |
-| 解説イラスト1(比較対象説: 地平線の月と目印/夜空高くの月の対比) | 🔲 プロンプト作成済み・生成待ち(`illustrations/tsuki-hikaku-taisho.png`) |
-| 解説イラスト2(見かけの距離説: ポンゾ錯視の図) | 🔲 プロンプト作成済み・生成待ち(`illustrations/ponzo-sakushi.png`) |
+| 記事カバー | ❌ 1回目生成→計測の結果、月の直径が約370px対約137px(約2.7倍差)で不合格。プロンプトを修正済み。再生成待ち(`covers/tsuki-no-sakushi.png`) |
+| 解説イラスト1(比較対象説: 地平線の月と目印/夜空高くの月の対比) | ❌ 1回目生成→計測の結果、月の直径が約188px対約171px(約9%差)で不合格。加えて左パネルの月に「M」の文字が誤って焼き込まれた。プロンプトを修正済み。再生成待ち(`illustrations/tsuki-hikaku-taisho.png`) |
+| 解説イラスト2(見かけの距離説: ポンゾ錯視の図) | ❌ 1回目生成→計測の結果、棒の幅が約287px対約566px(約2倍差)で不合格。原因はプロンプト自体の矛盾(「同じ長さ」と「線の間を隙間なく埋める」を同時要求)。プロンプトを修正済み。再生成待ち(`illustrations/ponzo-sakushi.png`) |
 | 解説イラスト3(太陽でも同じ現象が起きる対比) | 🔲 プロンプト作成済み・生成待ち(`illustrations/taiyou-sakushi.png`) |
 
-すべて未生成。生成後、下記「生成後のチェックリスト」に沿って検証し、Opus QA(`note-qa`)にかけること。
+カバー・イラスト1・イラスト2は1回目の生成物をピクセル計測で検証した結果、いずれも「同じ大きさ」という
+本文の核心と矛盾する不一致が見つかったため不合格とし、プロンプトを修正した(詳細は各セクション参照)。
+生成後は目視だけでなく、下記「生成後のチェックリスト」に沿ってコードで計測・検証し、Opus QA(`note-qa`)
+にかけること。
 
 ---
 
@@ -74,13 +77,20 @@ place ONE large, warm terracotta-orange (#E08454) circular moon shape (simple fl
 edge, no realistic craters, maybe a few simple soft crater dots) — this moon should look impressively
 big and inviting, sitting low and close to the horizon silhouette.
 
-The upper half of the composition is a calm deep-teal (#3A6960) night sky with a few small simple
-cream-colored star dots scattered around. High up in this night sky (near the moon's typical
-"high in the sky" position, away from the horizon), place a SECOND moon shape — the SAME actual size
-and same simple flat style as the horizon moon (identical circle size, to visually hint that the two
-moons are truly the same size), but in a paler cream/light-teal tone (#92B5AB) to suggest it looks
-smaller and less vivid against the open sky. Do not draw the two moons touching or overlapping; keep
-them as two clearly separate moons in two different parts of the sky.
+The upper half of the composition is a calm deep-teal (#3A6960) night sky, spanning the FULL width
+of the image (a plain flat-colored area, NOT a small isolated cloud or blob shape), with a few small
+simple cream-colored star dots scattered around. High up in this night sky, place a SECOND moon
+shape, in a paler cream/light-teal tone (#92B5AB) to suggest it looks smaller and less vivid against
+the open sky.
+
+CRITICAL — exact size match: both moons must have EXACTLY the same diameter in pixels, as if cut
+from the same circular stencil. As a concrete target, make each moon's diameter approximately 14%
+of the image's total width, and make sure both moons match this same size — do not draw the sky
+moon any smaller than the horizon moon just because it is farther away or higher up. Do not draw
+the two moons touching or overlapping; keep them as two clearly separate moons in two different
+parts of the sky. Do not write any letter, number, or label on or near either moon (no "M", no size
+markers) — each moon is a plain colored circle with a soft brown outline and a few soft crater dots
+only.
 
 Add one small, simple, curious character silhouette (a small round head shape, no realistic face,
 just a simple round shape with a small "?" mark floating near it) positioned small and secondary
@@ -111,7 +121,7 @@ crisp, correctly formed Japanese characters (not garbled — pay special attenti
 so it does not overlap the horizon-and-moons illustration below.
 ```
 
-**生成後の確認ポイント**: タイトルが5〜6行に収まり、文字が窮屈になっていないか(2〜4行に詰め込まれて文字が小さすぎたり、はみ出したりしていないか)。ネストした鉤括弧「「月の錯視」」や「?」「、」が正しく描画されているか拡大して確認。地平線近くの大きい月と空高くの小さく見える月が、実際には**同じ大きさの円**で描かれているか(片方が明らかに大きい円で描かれていたら、記事の核心=見かけの大きさはほぼ同じ、と矛盾するため失敗)。特定の説(比較対象・ポンゾ・見かけの距離)を示す図解要素が紛れ込んでいないか確認(カバーは現象の提示のみに留める)。月の絵柄がリアルな天体写真調になっていないか(可愛いフラットアイコンになっているか)確認。
+**生成後の確認ポイント**: タイトルが5〜6行に収まり、文字が窮屈になっていないか(2〜4行に詰め込まれて文字が小さすぎたり、はみ出したりしていないか)。ネストした鉤括弧「「月の錯視」」や「?」「、」が正しく描画されているか拡大して確認。地平線近くの大きい月と空高くの小さく見える月が、実際には**同じ大きさの円**で描かれているか(**要ピクセル計測**。1回目の生成では約370px対約137pxと約2.7倍もの差があり、目視だけでは見落としていた。定規代わりにPythonで直径を測って必ず数値で確認する)。空側の月が孤立した雲・吹き出しのような区画に閉じ込められておらず、上半分全体が単色の夜空になっているか確認。月やその近くに「M」等の文字・記号が誤って書き込まれていないか確認。特定の説(比較対象・ポンゾ・見かけの距離)を示す図解要素が紛れ込んでいないか確認(カバーは現象の提示のみに留める)。月の絵柄がリアルな天体写真調になっていないか(可愛いフラットアイコンになっているか)確認。
 
 ---
 
@@ -139,14 +149,21 @@ the border.
 LEFT panel, labeled at the top in bold Japanese "地平線近くの月": a warm evening/night scene with a
 simple horizon line featuring a few simple silhouettes of trees, a small house or two, and a low hill,
 all in dark brown or deep teal flat silhouette. Just above this horizon, place a terracotta-orange
-(#E08454) circular moon of a certain size — call this moon size "M". The moon should sit close to and
-just above the trees/houses/hill, so the comparison objects are clearly visible right next to the moon.
+(#E08454) circular moon. The moon should sit close to and just above the trees/houses/hill, so the
+comparison objects are clearly visible right next to the moon.
 
 RIGHT panel, labeled at the top in bold Japanese "空高くの月": a calm deep-teal (#3A6960) night sky
 with a few small cream-colored star dots, but NO ground, NO trees, NO buildings, NO hills — just open
-sky. Place a circular moon of the EXACT SAME SIZE "M" as the left panel's moon (identical diameter —
-this is critical, since the whole point is that the two moons are actually the same size), positioned
-high up with plenty of empty sky around it and no nearby objects to compare it to.
+sky. Place a circular moon positioned high up with plenty of empty sky around it and no nearby
+objects to compare it to.
+
+CRITICAL — exact size match: the two moons must have EXACTLY the same diameter in pixels, as if cut
+from the same circular stencil (this is essential, since the whole point of this illustration is that
+the two moons are actually the same size). As a concrete target, make each moon's diameter
+approximately 14% of the panel's width, and make sure both panels' moons match this same size exactly
+— do not draw the right-panel moon any smaller just because it has no nearby objects for scale. Do
+not write any letter, number, or label on or near either moon (no "M", no size markers) — each moon
+is a plain colored circle with a soft brown outline and a few soft crater dots only.
 
 Below both panels, add a short Japanese caption spanning the width of the image: "月の大きさは、実はどちらも同じ".
 Below that, add a second short caption: "まわりに目印があると、大きく感じられる、という説(比較対象説)".
@@ -160,7 +177,7 @@ for children, in the dark brown color (#483628). Do not add any numbers, percent
 marks to this image — it is a purely visual, illustrative comparison.
 ```
 
-**生成後の確認ポイント**: 左右の月が**ピクセル上で本当に同じ大きさ**に描かれているか(定規や画像編集ソフトで測るか、目視で明確に確認する。片方が大きく描かれていたら失敗、作り直す)。左パネル(地平線近く)には木・建物・山などの目印があり、右パネル(空高く)には何も無い開けた夜空になっているか。ラベルが「比較対象説」という名称のみで、「証明された」「これが正解」等の断定表現になっていないか確認。地名・実在の建物名などが書き込まれていないか確認。
+**生成後の確認ポイント**: 左右の月が**ピクセル上で本当に同じ大きさ**に描かれているか(**要ピクセル計測**。1回目の生成では約188px対約171pxと約9%の差があり、目視だけでは見落としていた。Pythonで直径を測って必ず数値で確認する)。左パネルの月の上や近くに「M」等の文字・記号が誤って書き込まれていないか確認。左パネル(地平線近く)には木・建物・山などの目印があり、右パネル(空高く)には何も無い開けた夜空になっているか。ラベルが「比較対象説」という名称のみで、「証明された」「これが正解」等の断定表現になっていないか確認。地名・実在の建物名などが書き込まれていないか確認。
 
 ---
 
@@ -190,17 +207,28 @@ upward, meeting close together (nearly touching, but not fully closed) near the 
 a simple, clear linear-perspective "receding into the distance" shape, like a stylized letter "A"
 without the crossbar.
 
-Place TWO horizontal bars across the gap between the two converging lines, both bars the SAME exact
-pixel length as each other (this equal length is essential to the illusion):
+Place TWO horizontal bars, one near the top and one near the bottom, both centered on the vertical
+midline of the image:
 - One bar placed HIGH UP, near the top where the two converging lines are close together (the
   "far away" position) — draw this bar in terracotta orange (#E08454).
 - One bar placed LOWER DOWN, near the bottom where the two converging lines are far apart (the
   "close up" position) — draw this bar in deep teal (#3A6960).
-Both bars must span fully from one converging line to the other at their respective heights, and
-both bars must be drawn with IDENTICAL length in pixels. To help confirm the equal length visually,
-add a small thin dashed vertical tick mark at each end of both bars, and optionally a faint dashed
-extension line showing that if you slid the top bar down to the bottom bar's position, the two would
-exactly match in length.
+
+CRITICAL — fixed equal length, NOT matched to the lines: both bars must be drawn with the exact same
+fixed pixel length as each other — for example, each bar should be about 22% of the image's total
+width, regardless of how far apart the two converging lines are at that height. Do NOT resize either
+bar to snugly fit the gap between the lines at its own height — the gap between the lines is narrower
+at the top and wider at the bottom, but the two bars themselves must NOT follow that difference.
+Because of this: the TOP (orange) bar will naturally stick out a little PAST the two converging lines
+on both sides (since the line-gap is narrower than the bar there), and the BOTTOM (teal) bar will
+naturally fall short of reaching the two converging lines, leaving a visible empty gap on both sides
+(since the line-gap is wider than the bar there). This mismatch between the bars and the lines is
+correct and intentional — it must look like two identical-length bars simply placed at different
+heights inside the same converging-lines shape, not like two bars custom-fit to the shape. To help
+confirm the equal length visually, add a small thin dashed vertical tick mark at each end of both
+bars, and a faint dashed vertical extension line connecting the top bar's tick marks straight down to
+the bottom bar's tick marks, showing that the two bars line up exactly if compared directly (even
+though they sit at different distances from the converging lines around them).
 
 Add a bold Japanese title at the top of the image, in the open space above the converging lines'
 meeting point: "ポンゾ錯視". Below the whole illustration, add a short Japanese caption: "この2本の棒、じつは同じ長さです" and beneath that a second smaller caption: "奥にあるほうが、大きく見えてしまいます".
@@ -214,7 +242,13 @@ for children, in the dark brown color (#483628). Leave a generous margin (at lea
 height/width) around all four edges so nothing (lines, bars, text) touches the border.
 ```
 
-**生成後の確認ポイント**: 2本の収束する線が、上に向かって狭まる(遠近感のある)構図になっているか。2本の横棒(奥側・手前側)が**実際に同じ長さ**で描かれているか(目視・画像編集ソフトでの計測どちらでも確認し、明らかに長さが違っていたら失敗、作り直す)。奥側の棒が線の間の狭い部分に、手前側の棒が広い部分に、それぞれ過不足なく収まっているか(線からはみ出したり、届いていなかったりしないか)。月や太陽の絵が紛れ込んでいないか確認(この図は現象単体の説明であり、月に直接結びつける描写はしない)。「これが正解」「証明された」等の断定表現が入っていないか確認。
+**生成後の確認ポイント**: 2本の収束する線が、上に向かって狭まる(遠近感のある)構図になっているか。
+2本の横棒(奥側・手前側)が**実際に同じ長さ**で描かれているか(**要ピクセル計測**。目視だけで判断しない
+— 過去に「線の間にぴったり収める」という誤った期待から、実際には長さが違う棒が生成された経緯があるため
+特に厳重に確認する)。**むしろ、奥側(オレンジ)の棒は収束線からはみ出し気味に、手前側(ティール)の棒は
+収束線に届かず隙間ができている状態が正しい**(収束線の間隔そのものに棒を合わせてしまっていたら失敗、
+作り直す)。月や太陽の絵が紛れ込んでいないか確認(この図は現象単体の説明であり、月に直接結びつける描写は
+しない)。「これが正解」「証明された」等の断定表現が入っていないか確認。
 
 ---
 
