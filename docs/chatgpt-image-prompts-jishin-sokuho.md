@@ -177,26 +177,27 @@ P波を捉える → そのデータから震源やコンピューターが素�
 追加しない。壊れる建物や怖がる表情など、恐怖を煽る表現も避ける(防災テーマのトーン方針)。
 
 ```
-A single wide illustration, flat warm children's book style, calm educational diagram mood (not a
-disaster scene), divided into two clearly connected parts: a PROCESS FLOW across the top, and a
-MAP-LIKE COMPARISON SCENE across the bottom.
+A single wide illustration, flat warm children's book style, calm and friendly educational diagram,
+like a page from a science picture book for children, divided into two clearly connected parts: a
+PROCESS FLOW across the top, and a MAP-LIKE COMPARISON SCENE across the bottom.
 
 TOP PART — process flow, left to right, 3 simple icons connected by 2 rightward arrows:
 1) A small simple seismometer icon (a round device with a needle/wave-drawing pen on a paper roll),
-   placed near a small ground-cross-section bump labeled in Japanese "震源に近い地震計". A small
-   teal wavy line icon (P波) touches this seismometer first. Caption below: "①P波をキャッチ".
+   placed near a small gentle ground-cross-section bump labeled in Japanese "震源に近い地震計". A
+   small teal wavy line icon (P波) touches this seismometer first. Caption below: "①P波をキャッチ".
 2) A small simple computer/gear icon with a tiny wave-graph on its screen. Caption below:
    "②コンピューターがすぐに計算".
-3) A small simple radio-tower or broadcast icon with a small speech-bubble/bell shape reading
-   "警報!" in Japanese inside or beside it (calm bell outline, not a red flashing siren). Caption
-   below: "③警報を送る".
+3) A small, round, friendly bell icon drawn in soft outline style, sitting inside a gentle speech
+   bubble, with the Japanese word "警報" written calmly beside or inside the bubble (plain text,
+   no exclamation mark, no bright red color). Caption below: "③警報を送る".
 Use small rightward arrows between icon 1→2 and 2→3 to show the order clearly. Do not reverse this
 order.
 
-BOTTOM PART — comparison scene, a simple horizontal calm landscape strip: on the LEFT, mark the
-epicenter with a small star icon (震源) at ground level, with NO houses drawn damaged or cracked
-anywhere in the scene. On the RIGHT side of the same strip, draw one small simple town — a few
-plain, undamaged house icons and one simple smartphone/alert-device icon with a small bell symbol.
+BOTTOM PART — comparison scene, a simple horizontal peaceful landscape strip: on the LEFT, mark the
+epicenter with a small star icon (震源) at ground level. On the RIGHT side of the same strip, draw
+one small, tidy, peaceful town — a few simple house icons with warm cream and terracotta-toned
+roofs, sitting calmly on smooth green ground, and one simple smartphone icon with a small bell
+symbol gently glowing on its screen.
 
 From the epicenter, draw TWO separate paths traveling rightward toward the town, that must look
 visually DIFFERENT in both color and shape, and one must be clearly ahead of the other:
@@ -219,9 +220,9 @@ the image — only the Japanese captions given above.
 
 [共通スタイル指定を貼り付け]
 All Japanese text must be crisp, correctly formed characters (not garbled), large and easy to read
-for children, in the dark brown color (#483628). Keep the whole scene calm, bright daytime or soft
-dusk lighting, with no cracked ground, no collapsed or tilted buildings, no rubble, and no scared or
-distressed facial expressions anywhere.
+for children, in the dark brown color (#483628). Keep the whole scene calm, bright, and gentle —
+soft daytime or dusk lighting, tidy intact houses, smooth ground, and a peaceful, reassuring
+atmosphere throughout, like an ordinary illustrated science-textbook diagram.
 ```
 
 **生成後の確認ポイント**: 上段の3ステップが「①P波をキャッチ→②解析→③警報を送る」の順番になっているか
