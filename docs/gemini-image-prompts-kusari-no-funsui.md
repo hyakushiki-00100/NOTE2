@@ -1,0 +1,306 @@
+# Gemini用 画像生成プロンプト集
+
+**案件**: note ブランド「せんせいのふしぎノート」記事「鎖の噴水現象」用イラスト一式
+**確定タイトル**: 「カップから鎖を落とすと、なぜか一瞬「噴水」になる? 「鎖の噴水現象」を見つけたのは、物理学者ではなくユーチューバーだった」(60字・コードで確認済み)
+**用途**: Gemini(画像生成)にそのまま貼り付けて使うプロンプト。実際の生成・保存・ピクセル計測はこの後オーナーが行う。
+**方針**: 過去記事(誕生日のパラドックス・月の錯視 等)と同様、**文字入り版のみ**を用意する。
+
+---
+
+## 進捗状況
+
+| 成果物 | 状態 |
+|---|---|
+| プロフィールアイコン | ✅ 既存の `profile/icon.png` をそのまま流用。作り直さない |
+| 記事カバー | 🔲 プロンプト作成済み・Gemini での生成待ち(`covers/kusari-no-funsui.png` として保存予定、1280×670) |
+| 解説イラスト1(カップから鎖が噴水のように盛り上がる図) | 🔲 プロンプト作成済み・生成待ち(`illustrations/kusari-no-funsui-01.png`) |
+| 解説イラスト2(山積みのリンクが押し返す力の図解) | 🔲 プロンプト作成済み・生成待ち(`illustrations/kusari-no-funsui-02.png`) |
+
+すべて未生成。生成後、下記「生成後のチェックリスト」に沿って検証し、Opus QA(`note-qa`)にかけること。
+
+---
+
+## 共通スタイル指定(毎回のプロンプト冒頭に付けると絵柄が揃います)
+
+```
+Flat, warm, friendly children's educational illustration style (like a Japanese picture book for
+elementary schoolers). Simple flat shapes, soft rounded corners, no photorealism, no realistic
+human faces. Clean vector-like line art with a warm brown outline (#483628). Color palette limited
+to: cream background (#FBF3E4), terracotta orange (#E08454, shadow #BF673C), deep teal
+(#3A6960, light teal #92B5AB). Cheerful and gentle mood, appropriate for children.
+The ball chain (the toy/lamp-pull style chain made of small round beads) must be drawn as a cute,
+flat, cartoon row of simple connected circles (like a string of round candy beads) — NOT a
+photorealistic or metallic-looking chain. No chrome/silver shading, no photo texture on the beads.
+```
+
+---
+
+## タイトル文字数の確認(コードで検証)
+
+```bash
+python3 -c "
+t = 'カップから鎖を落とすと、なぜか一瞬「噴水」になる? 「鎖の噴水現象」を見つけたのは、物理学者ではなくユーチューバーだった'
+print(len(t))
+"
+# => 60
+```
+
+60字は、過去記事の「誕生日のパラドックス」回(58字・5〜6行)とほぼ同じ長さで、「氷はなぜ水に浮くのか」回
+(35字・3行)よりも明確に長い。**行数に余裕を持たせ、6行を基本とする(窮屈なら7行まで許容)。**
+1〜4行に無理に詰め込むと文字が小さくなりすぎるか、はみ出す恐れがあるため避ける。
+
+想定の行分割(6行・自然な区切り):
+- line 1: 「カップから鎖を落とすと、」
+- line 2: 「なぜか一瞬「噴水」になる?」
+- line 3: 「「鎖の噴水現象」を」
+- line 4: 「見つけたのは、」
+- line 5: 「物理学者ではなく」
+- line 6: 「ユーチューバーだった」
+
+---
+
+## 1. 記事カバー
+
+本文冒頭の核となるフック(カップに山盛りにした鎖を垂らすと、カップの縁のところで一瞬「噴水」のように
+盛り上がる。この現象を見つけたのは物理学者ではなく、イギリスの科学系ユーチューバーだった)を絵にする。
+タイトルは確定済みなので、そのまま画像内に焼き込む。
+
+**注意(事実の取り扱い)**:
+- カバーには「鎖が縁の上で盛り上がる」という現象そのものと、「発見したのはユーチューバー」という
+  事実のヒントだけを描く。押し返す力の仕組み(解説イラスト2の内容)はカバーに描き込まない。
+- 「ユーチューバーが見つけた」ことを示すヒントは、**実在の人物・チャンネル名・実在プラットフォームの
+  ロゴを想起させない、一般的な記号**(例: シンプルな三角形の「再生ボタン」アイコン)に留める。
+  色は本文パレット内(テラコッタオレンジ/ディープティール)にし、実在の動画共有サービスのロゴの
+  配色(赤・白など)を模倣しない。
+- 具体的な高さ・角度・力の大きさの数値は本文に無いため、画像内に一切書き込まない(数値ラベル無し)。
+
+```
+A wide horizontal illustration (aspect ratio approximately 16:8.4), flat warm children's book style.
+In the lower-foreground area, a simple, friendly cream-colored cup (a plain round drinking cup or mug,
+no readable brand marks) sits on a small flat surface. From the inside of the cup, a single continuous
+line of a cute, flat, cartoon ball chain (a row of small connected round beads, terracotta orange
+#E08454 with a warm brown #483628 outline) spills up and over the rim of the cup.
+
+Right above the rim, the chain of beads forms a smooth, gentle arching loop that rises clearly above
+the height of the cup's rim — like a small fountain of beads hanging in mid-air — before curving back
+down along the outside of the cup and continuing to fall further down and slightly further back in the
+scene (implying it keeps falling toward the floor below), giving a sense of the chain flowing
+continuously: cup in front, the arched "fountain" bump just above the rim, and the falling chain
+trailing down and away behind it. Do not write any numbers, angle marks, or measurement lines anywhere
+near the arch — this is a purely visual "look, it's popping up like a fountain!" illustration, not a
+diagram.
+
+In one small, clearly secondary corner of the image (e.g. upper corner, away from the cup and the
+title text), include one small, simple, generic triangular "play button" icon (a plain rounded square
+or circle containing a simple triangle "play" shape), in the deep teal color (#3A6960) — this icon must
+be plain and generic, must NOT use red/white coloring or any shape resembling a real video-platform's
+logo, and must not include any readable brand name or channel name. It is only a small, subtle hint
+that "someone found this while filming/watching videos," and must remain visually secondary to the cup
+and chain.
+
+[共通スタイル指定を貼り付け]
+Include a title at the top of the image in bold, clearly legible Japanese text: 「カップから鎖を落とすと、なぜか一瞬「噴水」になる? 「鎖の噴水現象」を見つけたのは、物理学者ではなくユーチューバーだった」.
+CRITICAL — this title is 60 characters, similar in length to a past 58-character title that needed
+5 to 6 lines, so it must be laid out across 6 LINES (7 lines is also acceptable if 6 feels crowded)
+with a font size small enough to comfortably fit without crowding or overlapping the illustration
+below. Suggested balanced line breaks (6 lines):
+line 1: 「カップから鎖を落とすと、」
+line 2: 「なぜか一瞬「噴水」になる?」
+line 3: 「「鎖の噴水現象」を」
+line 4: 「見つけたのは、」
+line 5: 「物理学者ではなく」
+line 6: 「ユーチューバーだった」
+Do not force this onto 2–4 lines, as the font would become too small to read comfortably or the text
+would overflow or overlap the illustration below. Leave a clear, generous empty margin between the
+very top edge of the image and the top of line 1's characters (at least 6% of the image height) — no
+part of any character may touch or be cropped by the top edge. The title text must be crisp, correctly
+formed Japanese characters and symbols (not garbled — pay special attention to the two separate nested
+「」quote pairs around 噴水 and around 鎖の噴水現象, and the "?" mark), in the dark brown color
+(#483628), positioned in the upper area with calm, uncluttered space behind it so it does not overlap
+the cup-and-chain illustration below.
+```
+
+**生成後の確認ポイント**: タイトルが6〜7行に収まり、文字が窮屈になっていないか(1〜4行に詰め込まれて
+文字が小さすぎたり、はみ出したりしていないか)。2箇所ある鉤括弧「「噴水」」「「鎖の噴水現象」」がそれぞれ
+正しく対になって描画されているか、「?」が正しく描かれているか拡大して確認。鎖の盛り上がりが**カップの縁より
+明確に高い位置**に描かれているか(縁と同じ高さ・縁より低い位置で終わっていたら「噴水」に見えないため失敗)。
+チェーンが写実的な金属チェーンの質感になっておらず、可愛いフラットな粒の連なりになっているか確認。
+「再生ボタン」風アイコンが実在の動画プラットフォームのロゴ(特に赤・白の配色や特定の形)を想起させる見た目に
+なっていないか、実在のチャンネル名・人物の顔が描き込まれていないか確認。押し返す力の矢印など解説イラスト2の
+内容がカバーに紛れ込んでいないか確認。
+
+---
+
+## 2. 解説イラスト1: カップから鎖が噴水のように盛り上がる図(本文L12の📎マーカー該当)
+
+本文該当箇所(「くさりがカップの縁のところで、一瞬ふわっと持ち上がるんです。まるで縁のすぐ上に、目に
+見えない噴水があるみたいに。」)の要旨: カップに入った鎖が縁のところで一瞬持ち上がり、噴水のように
+盛り上がって見える。その後、鎖は外側へ落ちていく。
+
+**重要(本文にない事実を追加しない)**:
+- この段階ではまだ「なぜ持ち上がるのか」という仕組み(押し返す力)は説明されていない(それは
+  解説イラスト2で扱う)。このイラストには矢印・力の図解・数値ラベルを入れず、**現象そのものの見た目**
+  だけを描く。
+- 高さ・角度の具体的な数値は本文に無いため書き込まない。
+
+```
+A single illustration, flat warm children's book style, on a cream background (#FBF3E4).
+Composition (front-to-back): in the FOREGROUND (lower-center of the image), a simple, friendly
+cream-colored cup (plain round cup or mug, no brand marks) sits on a simple flat tabletop surface.
+
+Rising from inside the cup and spilling over its rim, draw a single continuous, cute, flat cartoon
+ball chain — a row of small connected round beads, terracotta orange (#E08454) with a warm brown
+(#483628) outline, all beads the same small size as each other.
+
+Just above the rim of the cup, the chain must form a clear, smooth, rounded ARCH shape (like a small
+dome or fountain-plume) that rises noticeably higher than the rim itself — make the height of this
+arch, from the rim up to the top of the arch, roughly 2 to 3 times the diameter of a single bead, so
+it reads as a distinct "popping up" bump rather than the chain merely resting flat on the rim.
+
+From the top of this arch, the chain then curves downward and outward on the far side of the cup, and
+continues down and slightly further back in the scene (smaller and slightly higher up in the frame, to
+suggest it is further away / already falling), trailing off toward the lower-back area of the image —
+this represents "手前にカップ、盛り上がった弧、奥に落ちていく鎖" (foreground: cup, middle: the raised
+arch, background: the falling chain continuing down and away).
+
+Do not draw any arrows, force diagrams, numbers, or angle marks in this image — it is a plain, charming
+depiction of the moment the chain "fountains" above the rim, nothing more.
+[共通スタイル指定を貼り付け]
+If any text is included, it must be limited to a short caption below the illustration, in Japanese, in
+the dark brown color (#483628): "カップの縁の上で、鎖がふわっと持ち上がる". Do not add any other text,
+numbers, or labels.
+```
+
+**生成後の確認ポイント**: 鎖の盛り上がり(アーチ)が**カップの縁より明確に高い位置**にあるか(縁と同じ
+高さや、縁より低い位置に見えたら「噴水」に見えないため失敗)。手前にカップ、盛り上がった弧、奥に落ちていく
+鎖、という奥行きのある構図になっているか(全部が同じ平面上に並んでいて奥行きが感じられない場合は再構成を
+検討)。矢印・力の図解・数値ラベルなど、まだ本文で説明していない仕組み(押し返す力)の要素が誤って
+紛れ込んでいないか確認。チェーンの粒が写実的な金属質感になっておらず、子ども向けの可愛いフラットな丸に
+なっているか確認。
+
+---
+
+## 3. 解説イラスト2: 山積みのリンクが押し返す力の図解(本文L36の📎マーカー該当)
+
+本文該当箇所(「カップの中のリンクは、山になって積み重なっています。そこから一粒が引っ張られると、その
+リンクはまっすぐ上ではなく、カーブを描くように向きを変えながら持ち上がります。このとき、下にある山の
+部分が邪魔になります。向きを変えようとするリンクが山に食い込まないよう、山のほうがリンクをぐいっと
+押し返すんです。」)の要旨:
+
+- カップの中でリンク(鎖の粒)は山になって積み重なっている。
+- 山から一粒が引っ張られると、そのリンクはまっすぐ上ではなくカーブを描いて持ち上がる。
+- カーブの途中でリンクが山に食い込みそうになる → **山のほうがリンクを押し返す。**
+- (本文L38の例え、床に置いた棒の片方を持ち上げると、もう片方が床を押しつけて反発する、と矛盾しない
+  向きにする: 押される側=リンク、押す側=山〈床に相当〉、力の向きは山からリンクへ、山から離れる方向。)
+
+**重要(本文にない事実を追加しない)**:
+- 押し返す力の**大きさ**の数値は本文に無いため書き込まない(矢印の長さで強さの数値を示唆しない。
+  矢印は「向き」を示すためだけに使う)。
+- 山とリンクの**相対的な大きさ**を明示する: 山(たくさんのリンクが積み重なったかたまり)は、動いている
+  リンク1粒よりも十分に大きく見えるようにする。目安として、山全体の直径は、リンク1粒の直径の**6〜8倍
+  程度**にする(山が「小さな粒がたくさん集まった、大きなかたまり」であることが一目で分かるように)。
+- 引き上げられるリンクは**1つだけ**とし、他のリンクと違う色調(強調色)にして区別できるようにする。
+
+**矢印の始点・終点(重要・向きを一意にする)**:
+- 矢印の**始点**: 山の表面のうち、持ち上がりつつあるリンクが山に触れている(食い込みそうになっている)
+  まさにその接触点。
+- 矢印の**終点**: その接触点から、山の中心とは反対方向(山の外側・持ち上がっていくリンクの方向)へ、
+  リンクの表面に向かって短く伸ばした先。
+- つまり矢印は**「山の表面」→「持ち上がるリンク」の向き**(山からリンクを押し出す向き)で描き、
+  逆向き(リンクから山へ向かう向き)には絶対に描かない。
+
+```
+A single illustration, flat warm children's book style, on a cream background (#FBF3E4). Show a
+simple cross-section / cutaway side view of a cup (a plain rounded container outline in dark brown
+#483628, open at the top, no need to draw the far wall — a simple U-shaped cup outline is enough).
+
+Inside the cup, draw a large mound (a pyramid/triangular pile shape) made up of MANY small connected
+round beads (deep teal #3A6960 with dark brown #483628 outlines), packed closely together to clearly
+read as "a big pile made of lots of small beads." Make the overall mound's width and height roughly
+6 to 8 times the diameter of a single bead, so the mound is obviously much larger than any one bead —
+this size difference is essential and must be clearly visible.
+
+From near the top surface of this mound, draw ONE single bead in a clearly different accent color
+(terracotta orange #E08454, to visually distinguish it from the teal mound beads) that is in the
+middle of being pulled up and out of the pile. Draw this one bead's path as a smooth curved line (like
+a hook or a backwards "J" shape) — NOT a straight vertical line — starting from within the mound,
+curving up and outward, then continuing straight upward and out of the top of the cup (implying the
+rest of the chain is pulling it up and away, off the top edge of the image).
+
+At the exact point where this curving orange bead's path is still close to / touching the surface of
+the teal mound (the "elbow" of the curve, where it is changing direction), draw ONE short, bold,
+clearly directional arrow in dark brown (#483628): the arrow's TAIL (starting point) must be placed
+exactly ON the surface of the teal mound at that contact point, and the arrow's HEAD (pointing end)
+must point AWAY from the center of the mound, toward the orange bead, ending just short of touching
+it — i.e., the arrow visually originates from the pile and pushes outward against the rising bead, and
+must NOT point the opposite way (must not appear to originate from the bead and point down into the
+pile). Label this arrow with small Japanese text next to it: "押し返す力".
+
+Add a small Japanese label near the mound pointing to it: "山(たくさんのリンクが積み重なったところ)".
+Add a small Japanese label near the orange bead: "持ち上げられるリンク".
+Do not write any numbers (no force values, no angles, no lengths) anywhere in this image — only the
+Japanese text labels listed above are allowed.
+[共通スタイル指定を貼り付け]
+All Japanese text and labels must be crisp, correctly formed characters (not garbled), large and easy
+to read for children, in the dark brown color (#483628). Leave a generous margin (at least 8% of the
+image height/width) around all four edges so nothing touches the border.
+```
+
+**生成後の確認ポイント**:
+- 矢印が**「山の表面」から「持ち上がるリンク」へ向かう向き**になっているか(逆向き・曖昧な向きに見えたら
+  失敗、作り直す)。矢印の始点が山の表面上、終点がリンクの近くになっているか具体的に確認する。
+- 山の大きさが、動いているリンク1粒よりも**明らかに大きい**(目安6〜8倍程度)か確認する(山と粒が同じ
+  くらいの大きさに見えたら「山になって積み重なっている」ことが伝わらないため失敗)。
+- 引き上げられるリンクの軌跡が、まっすぐ上ではなく**カーブを描いている**か確認する(本文「まっすぐ上では
+  なく、カーブを描くように向きを変えながら持ち上がります」との整合)。
+- この図の力の向き(山がリンクを押し返す=山が押す側、リンクが押される側)が、本文L38の「床に置いた棒の
+  片方を持ち上げると、もう片方が床を押しつけて反発する」という例え(床=押す側、棒の端=押される側)と
+  **矛盾していない**か確認する(押す側と押される側が入れ替わっていたら失敗)。
+- 力の大きさを示す数値(矢印の長さに数値ラベルを付ける等)が書き込まれていないか確認する。
+- 動いているリンクが他の粒と異なる色(強調色)になっており、1粒だけであることが分かるか確認する。
+- チェーンの粒が写実的な金属質感になっておらず、子ども向けの可愛いフラットな丸になっているか確認する。
+
+---
+
+## 生成後のチェックリスト
+
+- [ ] サイズ: カバーは1280×670pxにリサイズ、解説イラストは横1200px前後にリサイズ
+  ```bash
+  python3 -c "from PIL import Image;print(Image.open('covers/kusari-no-funsui.png').size)"
+  python3 -c "from PIL import Image;print(Image.open('illustrations/kusari-no-funsui-01.png').size)"
+  python3 -c "from PIL import Image;print(Image.open('illustrations/kusari-no-funsui-02.png').size)"
+  ```
+- [ ] 日本語テキスト(タイトル・ラベル・キャプションとも)が崩れていないか拡大して確認
+- [ ] カバーのタイトルが6〜7行に収まり、窮屈になっていないか確認(60字と長めのタイトルのため特に注意。
+      1〜4行に詰め込まれていないか)
+- [ ] カバー: 2箇所の鉤括弧「「噴水」」「「鎖の噴水現象」」と「?」が正しく描画されているか確認
+- [ ] カバー: 鎖の盛り上がりがカップの縁より明確に高い位置に描かれているか確認
+- [ ] カバー: 「再生ボタン」風アイコンが実在の動画プラットフォームのロゴを想起させる配色・形になっていないか、
+      実在の人物・チャンネル名が描き込まれていないか確認
+- [ ] カバー: 押し返す力の矢印など、解説イラスト2の内容が紛れ込んでいないか確認
+- [ ] イラスト1: 鎖の盛り上がり(アーチ)がカップの縁より明確に高い位置にあるか確認(縁と同じ高さ・
+      それ以下なら失敗)
+- [ ] イラスト1: 手前にカップ、盛り上がった弧、奥に落ちていく鎖、という奥行きのある構図になっているか確認
+- [ ] イラスト1: 矢印・力の図解・数値ラベルが紛れ込んでいないか確認(現象の見た目のみを描く図であること)
+- [ ] イラスト2: 矢印が「山の表面 → 持ち上がるリンク」の向きになっているか確認(逆向き・曖昧なら失敗)
+- [ ] イラスト2: 山の大きさがリンク1粒よりも明らかに大きい(目安6〜8倍程度)か確認
+- [ ] イラスト2: 引き上げられるリンクの軌跡がまっすぐでなくカーブを描いているか確認
+- [ ] イラスト2: 力の向き(山が押す側・リンクが押される側)が、本文L38の棒と床の例え(床が押す側・棒の端が
+      押される側)と矛盾していないか確認
+- [ ] イラスト2: 力の大きさを示す数値が書き込まれていないか確認
+- [ ] 全画像共通: ボールチェーンの粒が写実的な金属チェーンの質感になっておらず、子ども向けの可愛いフラットな
+      丸の連なりになっているか確認
+- [ ] 全画像共通: 使用色がクリーム(#FBF3E4)・テラコッタオレンジ(#E08454/影#BF673C)・ディープティール
+      (#3A6960/淡色#92B5AB)・ダークブラウン(#483628)の4色パレットに収まっているか確認
+- [ ] プロフィールアイコンは既存の `profile/icon.png` をそのまま使い、作り直していないか確認
+
+保存先の目安: `covers/kusari-no-funsui.png` /
+`illustrations/kusari-no-funsui-01.png`(カップから鎖が噴水のように盛り上がる図)/
+`illustrations/kusari-no-funsui-02.png`(山積みのリンクが押し返す力の図解)
+
+生成後、本文中の📎マーカーに対応するファイルパスが一致していることを確認してください(マーカー自体を
+実画像への記法に差し替えるのは `note-formatter` の担当です):
+- `illustrations/kusari-no-funsui-01.png` … 本文L12の📎マーカー(「くさりがカップの縁のところで、一瞬
+  ふわっと持ち上がるんです」の直後)と一致
+- `illustrations/kusari-no-funsui-02.png` … 本文L36の📎マーカー(「山のほうがリンクをぐいっと押し返す
+  んです」の直後)と一致
