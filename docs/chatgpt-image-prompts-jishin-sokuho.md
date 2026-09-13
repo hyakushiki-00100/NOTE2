@@ -13,9 +13,9 @@
 | 成果物 | 状態 |
 |---|---|
 | プロフィールアイコン | 既存の `profile/icon.png`(500×500)をそのまま流用。**作り直さない** |
-| 記事カバー | 未生成。下記プロンプトで生成する(`covers/jishin-sokuho.png`) |
-| 解説イラスト1(P波・S波が震源から同時に広がる図) | 未生成(`illustrations/jishin-pwave-swave-douji.png`) |
-| 解説イラスト2(地震計の検知→解析→警報配信と、警報がS波より先に届く様子の対比図) | 未生成(`illustrations/jishin-sokuho-shikumi.png`) |
+| 記事カバー | 生成済み・保存済み(`covers/jishin-sokuho.png`) |
+| 解説イラスト1(P波・S波が震源から同時に広がる図) | 生成済み・保存済み(`illustrations/jishin-pwave-swave-douji.png`) |
+| 解説イラスト2(検知→解析→警報の3ステップと、警報がS波より先に届く対比図) | 未生成。ChatGPTが2回連続で拒否したため抽象化して再設計(下記参照)。再挑戦待ち(`illustrations/jishin-sokuho-shikumi.png`) |
 
 ---
 
@@ -164,73 +164,73 @@ for children, in the dark brown color (#483628).
 
 ---
 
-## 3. 解説イラスト2: 地震計の検知→解析→警報配信と、警報がS波より先に届く様子の対比図
+## 3. 解説イラスト2: 検知→解析→警報の3ステップと、警報がS波より先に届く様子の対比図
+
+**改訂履歴**: 1回目の書き換え(disaster/siren/警報!等の否定文脈の語彙を除去)でも ChatGPT が
+コンテンツポリシー違反の疑いとして拒否した(2回目の同一結果)。地震計・スマートフォン・住宅・町
+といった「現実の防災警報システムを再現しているように見える具体的な要素」自体が拒否の要因である
+可能性を考え、今回はそれらの実物っぽいアイコンを一切使わず、**星印と旗だけの抽象的な「競走」の
+比喩**に置き換えた。本文にある事実(P波検知→解析→警報という順序、警報がS波より先に届くこと)は
+そのまま維持しつつ、絵柄を教科書の模式図のように抽象化している。
 
 本文該当箇所(「この速度差を利用したのが緊急地震速報」節、L38〜48)の要旨: 震源に近い地震計がまず
 P波を捉える → そのデータから震源やコンピューターが素早く解析する → 強いS波(主要動)が届く前に警報を
 送り出す。情報が電波で伝わる速さは、地面を伝わるS波の速さよりずっと速いので、揺れが来る前に知らせる
 ことができる。
 
-**重要(本文にない数値・要素を追加しない)**: この図には「震源近くの地震計がP波を検知」「データ解析」
-「警報配信」という3ステップの流れと、「警報(電波)がS波(地面を伝う揺れ)より先に遠くの地域に届く」
-という対比の**2点のみ**を描く。具体的な秒数、観測点(地震計)の数、震度の数値などは本文に無いので
-追加しない。壊れる建物や怖がる表情など、恐怖を煽る表現も避ける(防災テーマのトーン方針)。
+**重要(本文にない数値・要素を追加しない)**: この図には「P波を検知」「データ解析」「警報を送る」
+という3ステップの流れと、「警報がS波より先に届く」という対比の**2点のみ**を描く。具体的な秒数、
+観測点(地震計)の数、震度の数値などは本文に無いので追加しない。地震計・スマートフォン・住宅・町
+などの実物を思わせる具体的なアイコンは使わず、抽象的な図形(星・旗・線・矢印)のみで表現する。
 
 ```
-A single wide illustration, flat warm children's book style, calm and friendly educational diagram,
-like a page from a science picture book for children, divided into two clearly connected parts: a
-PROCESS FLOW across the top, and a MAP-LIKE COMPARISON SCENE across the bottom.
+A single wide illustration, flat warm children's book style, simple and abstract, like a diagram in
+a children's science textbook (not a realistic scene, not a map of any real place), divided into two
+connected horizontal sections: a simple 3-step FLOW at the top, and a simple TRACK-STYLE COMPARISON
+at the bottom.
 
-TOP PART — process flow, left to right, 3 simple icons connected by 2 rightward arrows:
-1) A small simple seismometer icon (a round device with a needle/wave-drawing pen on a paper roll),
-   placed near a small gentle ground-cross-section bump labeled in Japanese "震源に近い地震計". A
-   small teal wavy line icon (P波) touches this seismometer first. Caption below: "①P波をキャッチ".
-2) A small simple computer/gear icon with a tiny wave-graph on its screen. Caption below:
-   "②コンピューターがすぐに計算".
-3) A small, round, friendly bell icon drawn in soft outline style, sitting inside a gentle speech
-   bubble, with the Japanese word "警報" written calmly beside or inside the bubble (plain text,
-   no exclamation mark, no bright red color). Caption below: "③警報を送る".
-Use small rightward arrows between icon 1→2 and 2→3 to show the order clearly. Do not reverse this
-order.
+TOP SECTION — 3 small rounded cards in a row on a plain cream background, connected left to right by
+2 simple thin arrows:
+1) A card containing only a small teal (#3A6960) wavy line inside a soft circle outline. Caption
+   below in Japanese: "①ゆれを感じ取る".
+2) A card containing only a small simple gear shape with a tiny wave-graph line inside it. Caption
+   below in Japanese: "②コンピューターが計算する".
+3) A card containing only a small, soft, rounded envelope shape (a plain outline, gentle and simple,
+   no bright colors, no bell, no siren shape). Caption below in Japanese: "③警報を送る".
+Keep this left-to-right order; do not reverse it. Do not add any device, building, or human figure
+to this section — cards, simple icons, arrows, and Japanese captions only.
 
-BOTTOM PART — comparison scene, a simple horizontal peaceful landscape strip: on the LEFT, mark the
-epicenter with a small star icon (震源) at ground level. On the RIGHT side of the same strip, draw
-one small, tidy, peaceful town — a few simple house icons with warm cream and terracotta-toned
-roofs, sitting calmly on smooth green ground, and one simple smartphone icon with a small bell
-symbol gently glowing on its screen.
+BOTTOM SECTION — a simple horizontal "race track" diagram on a plain cream background: on the left
+end, a small star icon labeled in Japanese "震源". On the right end of the same horizontal strip, a
+small, plain, cheerful flag icon on a short pole (a simple finish-line marker, not representing any
+building, device, or place).
 
-From the epicenter, draw TWO separate paths traveling rightward toward the town, that must look
-visually DIFFERENT in both color and shape, and one must be clearly ahead of the other:
-(a) A fast, straight, deep-teal (#3A6960) dashed line or small lightning-bolt/radio-wave icon,
-    already reaching the smartphone at the town, with a small label "警報(電波)". This path must be
-    drawn as having ALREADY ARRIVED at the town (touching the smartphone icon).
-(b) A slower, wavy, terracotta-orange (#E08454) squiggly line representing S波 traveling along the
-    ground, drawn as NOT YET having reached the town — its wavy line should visibly stop short,
-    somewhere in the middle of the strip between the epicenter and the town, clearly behind/short of
-    where the teal path has reached. Label this squiggly line "S波(地面を伝わる強い揺れ)".
+From the star, draw two separate lines traveling rightward toward the flag, clearly different in
+color and shape, one ahead of the other:
+(a) A fast, straight, deep-teal (#3A6960) dashed line, already reaching all the way to the flag.
+    Label it in Japanese: "警報".
+(b) A slower, wavy, terracotta-orange (#E08454) line, stopping short in the middle of the strip,
+    clearly behind where the teal line ends. Label it in Japanese: "S波".
+The teal line must reach the flag; the orange line must stop before it, visibly shorter. Do not make
+them equal length, and do not let the orange line reach the flag first or at the same time.
 
-CRITICAL for placement: the teal "警報" path must reach all the way to the town/smartphone icon,
-while the orange "S波" squiggle must stop clearly before reaching the town, visibly shorter than the
-teal path. Do not make the two paths the same length. Do not make the orange S波 reach the town
-first or at the same time as the teal 警報.
-
-Add one shared caption above the bottom part, in Japanese: "警報(電波)は、S波(地面を伝わる揺れ)
-より先に届く". Do not add any specific numbers of seconds, distances, or station counts anywhere in
-the image — only the Japanese captions given above.
+Add one caption above this bottom section, in Japanese: "警報は、S波より先に届くことがある". Do not
+add any numbers (seconds, distances, station counts) anywhere in the image — only the Japanese
+captions given above. Do not draw any house, town, smartphone, seismometer, tower, or human figure
+anywhere in the image — only the plain shapes and icons described above.
 
 [共通スタイル指定を貼り付け]
 All Japanese text must be crisp, correctly formed characters (not garbled), large and easy to read
-for children, in the dark brown color (#483628). Keep the whole scene calm, bright, and gentle —
-soft daytime or dusk lighting, tidy intact houses, smooth ground, and a peaceful, reassuring
-atmosphere throughout, like an ordinary illustrated science-textbook diagram.
+for children, in the dark brown color (#483628). Keep the whole illustration simple, abstract, and
+cheerful, like an ordinary printed diagram in a children's science textbook.
 ```
 
-**生成後の確認ポイント**: 上段の3ステップが「①P波をキャッチ→②解析→③警報を送る」の順番になっているか
-(順番が入れ替わっていないか)。下段で、**ティールの「警報(電波)」の線が町(スマホ)まで届いていて、
-オレンジの「S波」の線がまだ町の手前で止まっている**か(警報の方が先に届く、という対比が逆になって
-いたら失敗)。具体的な秒数・観測点の数・震度などの本文に無い数値が描き加えられていないか。建物の破損・
-ひび割れ・怖がる表情・赤い点滅サイレンなど、恐怖を煽る表現が無いか(このテーマは防災上のトーン配慮が
-特に必要)。
+**生成後の確認ポイント**: 上段の3ステップが「①ゆれを感じ取る→②計算する→③警報を送る」の順番に
+なっているか(順番が入れ替わっていないか)。下段で、**ティールの「警報」の線が旗まで届いていて、
+オレンジの「S波」の線がまだ旗の手前で止まっている**か(警報の方が先に届く、という対比が逆になって
+いたら失敗)。具体的な秒数・観測点の数・震度などの本文に無い数値が描き加えられていないか。住宅・町・
+スマートフォン・地震計・塔・人物など、実物を思わせる具体的な要素が紛れ込んでいないか(今回の改訂で
+意図的に排除した要素のため、混入していたら失敗)。
 
 ---
 
@@ -252,16 +252,17 @@ atmosphere throughout, like an ordinary illustrated science-textbook diagram.
       指摘された経緯があるため特に厳重に確認する)
 - [ ] イラスト1: ラベルの数値が本文にある「P波:秒速7kmくらい」「S波:秒速4kmくらい」のみで、
       本文に無い距離・秒数などの数値が追加されていないか確認
-- [ ] イラスト2: 上段の3ステップが「①P波をキャッチ→②解析→③警報を送る」の順で描かれているか確認
-- [ ] イラスト2: 下段で、ティールの「警報(電波)」が町まで届き、オレンジの「S波」がまだ手前で止まって
+- [ ] イラスト2: 上段の3ステップが「①ゆれを感じ取る→②計算する→③警報を送る」の順で描かれているか確認
+- [ ] イラスト2: 下段で、ティールの「警報」の線が旗まで届き、オレンジの「S波」の線がまだ手前で止まって
       いる(警報が先に届く)対比になっているか確認(逆なら失敗)
 - [ ] イラスト2: 本文に無い秒数・観測点数・震度等の数値が追加されていないか確認
-- [ ] イラスト2: 建物の破損、怖がる表情、赤い点滅サイレンなど恐怖を煽る表現が無いか確認
+- [ ] イラスト2: 住宅・町・スマートフォン・地震計・塔・人物など、実物を思わせる具体的な要素が
+      紛れ込んでいないか確認(今回の改訂で意図的に排除した要素のため、混入していたら失敗)
 - [ ] プロフィールアイコンは既存の `profile/icon.png` をそのまま使い、作り直していないか確認
 
 保存先の目安: `covers/jishin-sokuho.png` /
 `illustrations/jishin-pwave-swave-douji.png`(震源からP波・S波が同時に広がる図)/
-`illustrations/jishin-sokuho-shikumi.png`(地震計の検知→解析→警報配信と、警報がS波より先に届く対比図)
+`illustrations/jishin-sokuho-shikumi.png`(検知→解析→警報の3ステップと、警報がS波より先に届く対比図)
 
 生成後、本文中の📎マーカーを画像貼り付け手順に反映してください(マーカー自体は `note-formatter` が
 実画像への差し替えを行う担当のため、ここでは生成物のファイルパスが本文の📎マーカーの指定と
