@@ -15,7 +15,7 @@
 | プロフィールアイコン | 既存の `profile/icon.png`(500×500)をそのまま流用。**作り直さない** |
 | 記事カバー | 生成済み・保存済み(`covers/jishin-sokuho.png`) |
 | 解説イラスト1(P波・S波が震源から同時に広がる図) | 生成済み・保存済み(`illustrations/jishin-pwave-swave-douji.png`) |
-| 解説イラスト2(検知→解析→警報の3ステップと、警報がS波より先に届く対比図) | 未生成。ChatGPTが2回連続で拒否したため抽象化して再設計(下記参照)。再挑戦待ち(`illustrations/jishin-sokuho-shikumi.png`) |
+| 解説イラスト2(検知→解析→警報の3ステップと、警報がS波より先に届く対比図) | 生成済み・保存済み(`illustrations/jishin-sokuho-shikumi.png`、抽象化した再設計版で成功) |
 
 ---
 
