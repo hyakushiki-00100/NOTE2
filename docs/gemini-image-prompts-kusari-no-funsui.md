@@ -12,11 +12,12 @@
 | 成果物 | 状態 |
 |---|---|
 | プロフィールアイコン | ✅ 既存の `profile/icon.png` をそのまま流用。作り直さない |
-| 記事カバー | ✅ 生成済み・保存済み(`covers/kusari-no-funsui.png`、1280×670) |
-| 解説イラスト1(カップから鎖が噴水のように盛り上がる図) | ✅ 生成済み・保存済み(`illustrations/kusari-no-funsui-01.png`、1200×655) |
-| 解説イラスト2(山積みのリンクが押し返す力の図解) | ✅ 生成済み・保存済み(`illustrations/kusari-no-funsui-02.png`、1200×655)。1回目の生成では矢印が「リンク→山」の
-  向き(山の斜面に沿って上向き=誤り)に見えたため、矢印だけをPythonで消去し、山の表面からリンクの
-  進行方向に沿って押し出す向き(矢印の根本=山の表面、先端=リンク側)に描き直した |
+| 記事カバー | ❌ Opus精査で不合格(タイトルを「見つけた」→「広めた」に変更したため文字列が古い。再生ボタン風
+  アイコンもYouTubeのロゴに酷似と指摘)。プロンプトを修正済み。再生成待ち(`covers/kusari-no-funsui.png`) |
+| 解説イラスト1(カップから鎖が噴水のように盛り上がる図) | ✅ 生成済み・保存済み、Opus精査で合格(`illustrations/kusari-no-funsui-01.png`、1200×655) |
+| 解説イラスト2(山積みのリンクが押し返す力の図解) | ❌ Opus精査で不合格(矢印修正の消し跡が残っていた、持ち上がる部分が
+  粒感の無い滑らかな線でイラスト1との統一性が無かった)。プロンプトを修正済み。再生成待ち
+  (`illustrations/kusari-no-funsui-02.png`) |
 
 生成後、下記「生成後のチェックリスト」に沿って検証し、Opus QA(`note-qa`)にかけること。
 
@@ -63,17 +64,23 @@ print(len(t))
 
 ## 1. 記事カバー
 
+**改訂履歴**: 1回目のOpus精査で、(a) タイトルの「見つけたのは」が発見の先取権を断定しすぎており
+本文の「広めたのは」に統一することになった(本文修正済み)ため、カバーのタイトル文字列も更新が
+必要、(b) 「再生ボタン」風アイコンが角丸長方形+中央の白三角というYouTubeの再生ボタンのシルエットに
+近すぎる、との指摘を受けた。今回はタイトルを更新し、アイコン形状も単純な円に変更する。
+
 本文冒頭の核となるフック(カップに山盛りにした鎖を垂らすと、カップの縁のところで一瞬「噴水」のように
-盛り上がる。この現象を見つけたのは物理学者ではなく、イギリスの科学系ユーチューバーだった)を絵にする。
+盛り上がる。この現象を広めたのは物理学者ではなく、イギリスの科学系ユーチューバーだった)を絵にする。
 タイトルは確定済みなので、そのまま画像内に焼き込む。
 
 **注意(事実の取り扱い)**:
-- カバーには「鎖が縁の上で盛り上がる」という現象そのものと、「発見したのはユーチューバー」という
+- カバーには「鎖が縁の上で盛り上がる」という現象そのものと、「広めたのはユーチューバー」という
   事実のヒントだけを描く。押し返す力の仕組み(解説イラスト2の内容)はカバーに描き込まない。
-- 「ユーチューバーが見つけた」ことを示すヒントは、**実在の人物・チャンネル名・実在プラットフォームの
-  ロゴを想起させない、一般的な記号**(例: シンプルな三角形の「再生ボタン」アイコン)に留める。
-  色は本文パレット内(テラコッタオレンジ/ディープティール)にし、実在の動画共有サービスのロゴの
-  配色(赤・白など)を模倣しない。
+- 「ユーチューバーが広めた」ことを示すヒントは、**実在の人物・チャンネル名・実在プラットフォームの
+  ロゴを想起させない、一般的な記号**に留める。角丸長方形(ピル型)の枠に白い三角形、という組み合わせは
+  実在の動画プラットフォームのロゴに酷似するため使わない。代わりに**単純な円形**の中に三角形を置く形にし、
+  色は本文パレット内(ディープティール)にする。実在の動画共有サービスのロゴの配色(赤・白など)や
+  形(角丸長方形)を模倣しない。
 - 具体的な高さ・角度・力の大きさの数値は本文に無いため、画像内に一切書き込まない(数値ラベル無し)。
 
 ```
@@ -93,23 +100,24 @@ near the arch — this is a purely visual "look, it's popping up like a fountain
 diagram.
 
 In one small, clearly secondary corner of the image (e.g. upper corner, away from the cup and the
-title text), include one small, simple, generic triangular "play button" icon (a plain rounded square
-or circle containing a simple triangle "play" shape), in the deep teal color (#3A6960) — this icon must
-be plain and generic, must NOT use red/white coloring or any shape resembling a real video-platform's
-logo, and must not include any readable brand name or channel name. It is only a small, subtle hint
+title text), include one small, simple PLAIN CIRCLE (a plain filled or outlined circle, NOT a rounded
+square or "pill" shape) in the deep teal color (#3A6960), with a simple small triangle shape inside it
+pointing to one side. This must read as a generic, abstract "something is playing/in motion" hint, not
+as a copy of any real video-platform logo — keep the outer shape a plain circle only, no rounded-corner
+rectangle, no card/badge shape, no readable brand name or channel name. It is only a small, subtle hint
 that "someone found this while filming/watching videos," and must remain visually secondary to the cup
 and chain.
 
 [共通スタイル指定を貼り付け]
-Include a title at the top of the image in bold, clearly legible Japanese text: 「カップから鎖を落とすと、なぜか一瞬「噴水」になる? 「鎖の噴水現象」を見つけたのは、物理学者ではなくユーチューバーだった」.
-CRITICAL — this title is 60 characters, similar in length to a past 58-character title that needed
+Include a title at the top of the image in bold, clearly legible Japanese text: 「カップから鎖を落とすと、なぜか一瞬「噴水」になる? 「鎖の噴水現象」を広めたのは、物理学者ではなくユーチューバーだった」.
+CRITICAL — this title is 59 characters, similar in length to a past 58-character title that needed
 5 to 6 lines, so it must be laid out across 6 LINES (7 lines is also acceptable if 6 feels crowded)
 with a font size small enough to comfortably fit without crowding or overlapping the illustration
 below. Suggested balanced line breaks (6 lines):
 line 1: 「カップから鎖を落とすと、」
 line 2: 「なぜか一瞬「噴水」になる?」
 line 3: 「「鎖の噴水現象」を」
-line 4: 「見つけたのは、」
+line 4: 「広めたのは、」
 line 5: 「物理学者ではなく」
 line 6: 「ユーチューバーだった」
 Do not force this onto 2–4 lines, as the font would become too small to read comfortably or the text
@@ -122,14 +130,15 @@ formed Japanese characters and symbols (not garbled — pay special attention to
 the cup-and-chain illustration below.
 ```
 
-**生成後の確認ポイント**: タイトルが6〜7行に収まり、文字が窮屈になっていないか(1〜4行に詰め込まれて
-文字が小さすぎたり、はみ出したりしていないか)。2箇所ある鉤括弧「「噴水」」「「鎖の噴水現象」」がそれぞれ
-正しく対になって描画されているか、「?」が正しく描かれているか拡大して確認。鎖の盛り上がりが**カップの縁より
-明確に高い位置**に描かれているか(縁と同じ高さ・縁より低い位置で終わっていたら「噴水」に見えないため失敗)。
-チェーンが写実的な金属チェーンの質感になっておらず、可愛いフラットな粒の連なりになっているか確認。
-「再生ボタン」風アイコンが実在の動画プラットフォームのロゴ(特に赤・白の配色や特定の形)を想起させる見た目に
-なっていないか、実在のチャンネル名・人物の顔が描き込まれていないか確認。押し返す力の矢印など解説イラスト2の
-内容がカバーに紛れ込んでいないか確認。
+**生成後の確認ポイント**: タイトルが「広めたのは」の文言で6〜7行に収まり、文字が窮屈になっていないか
+(1〜4行に詰め込まれて文字が小さすぎたり、はみ出したりしていないか)。2箇所ある鉤括弧「「噴水」」
+「「鎖の噴水現象」」がそれぞれ正しく対になって描画されているか、「?」が正しく描かれているか拡大して確認。
+鎖の盛り上がりが**カップの縁より明確に高い位置**に描かれているか(縁と同じ高さ・縁より低い位置で終わって
+いたら「噴水」に見えないため失敗)。チェーンが写実的な金属チェーンの質感になっておらず、可愛いフラットな
+粒の連なりになっているか確認。**アイコンの外形が単純な円になっており、角丸長方形(ピル型)になっていないか
+特に厳重に確認**する(1回目の生成でYouTubeの再生ボタンに酷似していると指摘された経緯があるため)。実在の
+チャンネル名・人物の顔が描き込まれていないか確認。押し返す力の矢印など解説イラスト2の内容がカバーに
+紛れ込んでいないか確認。
 
 ---
 
@@ -184,6 +193,13 @@ numbers, or labels.
 
 ## 3. 解説イラスト2: 山積みのリンクが押し返す力の図解(本文L36の📎マーカー該当)
 
+**改訂履歴**: 1回目の生成物は、(a) 矢印の向きが「リンク→山」に見える誤った向きだったため画像編集で
+消去・再描画したが、消去跡がうっすら残っていた、(b) 持ち上げられているリンクが、粒感のない滑らかな
+オレンジの線(チューブ状)として描かれており、解説イラスト1の「小さな丸いビーズが連なった鎖」という
+統一デザインと矛盾し、山と同じ「くさり」であることが伝わらなかった、という2つの問題が見つかった。
+今回はゼロから再生成し、矢印の向きと、くさりの見た目の統一(山も持ち上がる部分も、同じ丸いビーズが
+つながった鎖であること)の両方を満たすようにする。
+
 本文該当箇所(「カップの中のリンクは、山になって積み重なっています。そこから一粒が引っ張られると、その
 リンクはまっすぐ上ではなく、カーブを描くように向きを変えながら持ち上がります。このとき、下にある山の
 部分が邪魔になります。向きを変えようとするリンクが山に食い込まないよう、山のほうがリンクをぐいっと
@@ -216,27 +232,34 @@ A single illustration, flat warm children's book style, on a cream background (#
 simple cross-section / cutaway side view of a cup (a plain rounded container outline in dark brown
 #483628, open at the top, no need to draw the far wall — a simple U-shaped cup outline is enough).
 
-Inside the cup, draw a large mound (a pyramid/triangular pile shape) made up of MANY small connected
-round beads (deep teal #3A6960 with dark brown #483628 outlines), packed closely together to clearly
-read as "a big pile made of lots of small beads." Make the overall mound's width and height roughly
-6 to 8 times the diameter of a single bead, so the mound is obviously much larger than any one bead —
-this size difference is essential and must be clearly visible.
+Inside the cup, draw a large mound (a pyramid/triangular pile shape) made up of MANY small round beads
+(deep teal #3A6960 with dark brown #483628 outlines), each bead touching its neighbors, packed closely
+together to clearly read as "a big pile made of lots of small connected beads" — this is the SAME ball
+chain material as illustration 1, just piled up instead of hanging in a loop. Make the overall mound's
+width and height roughly 6 to 8 times the diameter of a single bead, so the mound is obviously much
+larger than any one bead — this size difference is essential and must be clearly visible.
 
-From near the top surface of this mound, draw ONE single bead in a clearly different accent color
-(terracotta orange #E08454, to visually distinguish it from the teal mound beads) that is in the
-middle of being pulled up and out of the pile. Draw this one bead's path as a smooth curved line (like
-a hook or a backwards "J" shape) — NOT a straight vertical line — starting from within the mound,
-curving up and outward, then continuing straight upward and out of the top of the cup (implying the
-rest of the chain is pulling it up and away, off the top edge of the image).
+Starting from near the top surface of this mound, draw ONE continuous chain of the SAME kind of small
+round beads (a row of touching circles, exactly like illustration 1's ball chain — NOT a smooth tube,
+NOT a solid curved line without visible bead segments), colored in a clearly different accent color
+(terracotta orange #E08454 with dark brown #483628 outlines, to visually distinguish it from the teal
+mound) that is in the middle of being pulled up and out of the pile. Draw this chain of beads following
+a curved path (like a hook or a backwards "J" shape) — NOT a straight vertical line — starting from
+within the mound, curving up and outward, then continuing straight upward and out of the top of the
+cup (implying the rest of the chain is pulling it up and away, off the top edge of the image). Every
+part of this orange chain, from where it leaves the mound to where it exits the top of the image, must
+show individual round bead segments, just like the teal beads in the mound and like the chain in
+illustration 1 — at no point should it become a smooth featureless line or tube.
 
-At the exact point where this curving orange bead's path is still close to / touching the surface of
-the teal mound (the "elbow" of the curve, where it is changing direction), draw ONE short, bold,
-clearly directional arrow in dark brown (#483628): the arrow's TAIL (starting point) must be placed
-exactly ON the surface of the teal mound at that contact point, and the arrow's HEAD (pointing end)
-must point AWAY from the center of the mound, toward the orange bead, ending just short of touching
-it — i.e., the arrow visually originates from the pile and pushes outward against the rising bead, and
-must NOT point the opposite way (must not appear to originate from the bead and point down into the
-pile). Label this arrow with small Japanese text next to it: "押し返す力".
+At the exact point where this orange chain first leaves the surface of the teal mound (the very first
+orange bead, closest to the mound, at the "elbow" of the curve where it changes direction), draw ONE
+short, bold, clearly directional arrow in dark brown (#483628): the arrow's TAIL (starting point) must
+be placed exactly ON the surface of the teal mound at that contact point, and the arrow's HEAD
+(pointing end) must point in the SAME direction the orange chain is heading immediately after that
+point (away from the mound's center, along the chain's outward curve), ending just short of touching
+the first orange bead — i.e., the arrow visually originates from the pile and pushes the chain along
+its own departing direction, and must NOT point back toward the peak of the mound or in any direction
+other than the chain's own outward path. Label this arrow with small Japanese text next to it: "押し返す力".
 
 Add a small Japanese label near the mound pointing to it: "山(たくさんのリンクが積み重なったところ)".
 Add a small Japanese label near the orange bead: "持ち上げられるリンク".
@@ -261,6 +284,9 @@ image height/width) around all four edges so nothing touches the border.
 - 力の大きさを示す数値(矢印の長さに数値ラベルを付ける等)が書き込まれていないか確認する。
 - 動いているリンクが他の粒と異なる色(強調色)になっており、1粒だけであることが分かるか確認する。
 - チェーンの粒が写実的な金属質感になっておらず、子ども向けの可愛いフラットな丸になっているか確認する。
+- **持ち上がっていく部分が、山と同じ「丸いビーズが連なった鎖」に見えるか確認する**(滑らかな線・チューブ状に
+  なっていて粒感が無い場合は失敗。イラスト1の鎖と同じ見た目の統一性が必要)。
+- 矢印の周辺(特に元の矢印があった位置)に、消し跡・薄い影のような残留物が無いか、拡大して確認する。
 
 ---
 
