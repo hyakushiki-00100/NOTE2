@@ -64,10 +64,17 @@ print(len(t))
 
 ## 1. 記事カバー
 
-**改訂履歴**: 1回目のOpus精査で、(a) タイトルの「見つけたのは」が発見の先取権を断定しすぎており
-本文の「広めたのは」に統一することになった(本文修正済み)ため、カバーのタイトル文字列も更新が
-必要、(b) 「再生ボタン」風アイコンが角丸長方形+中央の白三角というYouTubeの再生ボタンのシルエットに
-近すぎる、との指摘を受けた。今回はタイトルを更新し、アイコン形状も単純な円に変更する。
+**改訂履歴**:
+- 1回目のOpus精査で、(a) タイトルの「見つけたのは」が発見の先取権を断定しすぎており本文の
+  「広めたのは」に統一することになった(本文修正済み)ため、カバーのタイトル文字列も更新が必要、
+  (b) 「再生ボタン」風アイコンが角丸長方形+中央の白三角というYouTubeの再生ボタンのシルエットに
+  近すぎる、との指摘を受けた。タイトルを更新し、アイコン形状も単純な円に変更した(この修正は合格)。
+- 2回目のOpus精査で新たに2点の不合格が見つかった: (c) カップの縁付近に、本流から枝分かれした
+  行き止まりの鎖や、丸ビーズではなく潰れたカプセル状の塊など、描画が崩れた部分があった。
+  (d) カップの中身が、ビーズの質感のない一様なオレンジの塗りつぶしになっており、コーヒーなどの
+  飲み物にしか見えず、本文6行目の「このくさりをカップに山盛りに入れて」という設定と食い違っていた。
+  今回はカップの中身を明確に「積み重なったビーズの山」として描くよう指示を追加し、鎖は枝分かれの
+  無い一本の連続した線であることを明記した。
 
 本文冒頭の核となるフック(カップに山盛りにした鎖を垂らすと、カップの縁のところで一瞬「噴水」のように
 盛り上がる。この現象を広めたのは物理学者ではなく、イギリスの科学系ユーチューバーだった)を絵にする。
@@ -86,18 +93,27 @@ print(len(t))
 ```
 A wide horizontal illustration (aspect ratio approximately 16:8.4), flat warm children's book style.
 In the lower-foreground area, a simple, friendly cream-colored cup (a plain round drinking cup or mug,
-no readable brand marks) sits on a small flat surface. From the inside of the cup, a single continuous
-line of a cute, flat, cartoon ball chain (a row of small connected round beads, terracotta orange
-#E08454 with a warm brown #483628 outline) spills up and over the rim of the cup.
+no readable brand marks) sits on a small flat surface. Fill the inside of the cup, right up to the rim,
+with a small mound of the same small round terracotta-orange (#E08454) beads used in the chain — many
+individual bead circles piled up together, clearly readable as "a cup filled with a pile of small
+beads," not a smooth solid color fill and not liquid. This piled mound of beads is where the chain
+comes from.
 
-Right above the rim, the chain of beads forms a smooth, gentle arching loop that rises clearly above
-the height of the cup's rim — like a small fountain of beads hanging in mid-air — before curving back
-down along the outside of the cup and continuing to fall further down and slightly further back in the
-scene (implying it keeps falling toward the floor below), giving a sense of the chain flowing
-continuously: cup in front, the arched "fountain" bump just above the rim, and the falling chain
-trailing down and away behind it. Do not write any numbers, angle marks, or measurement lines anywhere
-near the arch — this is a purely visual "look, it's popping up like a fountain!" illustration, not a
-diagram.
+From the top of this bead-filled cup, exactly ONE single continuous chain (a row of small connected
+round beads, same terracotta orange #E08454 with a warm brown #483628 outline) rises up and spills
+over the rim. This must be a single unbroken line with no side-branches, no dead-end stubs, and no
+separate disconnected bead shapes anywhere near the rim or handle — only one continuous strand of
+beads from the pile in the cup, up over the rim, and onward as described below.
+
+Right above the rim, this chain forms a smooth, gentle arching loop that rises clearly above the
+height of the cup's rim — like a small fountain of beads hanging in mid-air — before curving back down
+along the outside of the cup and continuing down toward the lower-right corner of the image, trailing
+off and fading out near the bottom-right edge of the frame (implying it keeps falling further down,
+out of view, rather than resting on the same tabletop the cup sits on). Give a sense of the chain
+flowing continuously: cup in front, the bead-filled pile inside it, the arched "fountain" bump just
+above the rim, and the falling chain trailing down and off the edge of the image behind it. Do not
+write any numbers, angle marks, or measurement lines anywhere near the arch — this is a purely visual
+"look, it's popping up like a fountain!" illustration, not a diagram.
 
 In one small, clearly secondary corner of the image (e.g. upper corner, away from the cup and the
 title text), include one small, simple PLAIN CIRCLE (a plain filled or outlined circle, NOT a rounded
@@ -138,7 +154,11 @@ the cup-and-chain illustration below.
 粒の連なりになっているか確認。**アイコンの外形が単純な円になっており、角丸長方形(ピル型)になっていないか
 特に厳重に確認**する(1回目の生成でYouTubeの再生ボタンに酷似していると指摘された経緯があるため)。実在の
 チャンネル名・人物の顔が描き込まれていないか確認。押し返す力の矢印など解説イラスト2の内容がカバーに
-紛れ込んでいないか確認。
+紛れ込んでいないか確認。**カップの中身が、粒の見える「ビーズの山」になっているか(一様な塗りつぶしで
+コーヒー等の飲み物に見えていたら失敗)確認する**。**鎖が枝分かれ無く一本につながっており、縁や取っ手の
+近くに、丸ビーズではない潰れた塊・行き止まりの突起が無いか拡大して確認する**(2回目の生成でこの種の
+描画崩れが見つかった経緯があるため)。落ちていく鎖が、カップと同じ高さの床の上で終わっておらず、
+画面右下の端に向かって消えていく(まだ落下が続いていることを示唆する)構図になっているか確認する。
 
 ---
 
@@ -154,14 +174,22 @@ the cup-and-chain illustration below.
   だけを描く。
 - 高さ・角度の具体的な数値は本文に無いため書き込まない。
 
+**改訂履歴**: 1回目の生成でカップの中身が空(何も入っていない)に見え、本文6行目の「カップに山盛りに
+入れて」という設定と食い違っていた。今回はカップの中に、ビーズが山盛りになっている様子を明示的に
+描くよう指示を追加した。
+
 ```
 A single illustration, flat warm children's book style, on a cream background (#FBF3E4).
 Composition (front-to-back): in the FOREGROUND (lower-center of the image), a simple, friendly
 cream-colored cup (plain round cup or mug, no brand marks) sits on a simple flat tabletop surface.
+Fill the inside of the cup, right up to the rim, with a small mound of the same small round
+terracotta-orange (#E08454) beads used in the chain — many individual bead circles piled up together,
+clearly readable as "a cup filled with a pile of small beads," not empty and not a smooth solid color.
 
-Rising from inside the cup and spilling over its rim, draw a single continuous, cute, flat cartoon
-ball chain — a row of small connected round beads, terracotta orange (#E08454) with a warm brown
-(#483628) outline, all beads the same small size as each other.
+Rising from this pile of beads inside the cup and spilling over its rim, draw a single continuous,
+cute, flat cartoon ball chain — a row of small connected round beads, terracotta orange (#E08454) with
+a warm brown (#483628) outline, all beads the same small size as each other. This must be a single
+unbroken strand with no side-branches or disconnected bead shapes anywhere near the rim.
 
 Just above the rim of the cup, the chain must form a clear, smooth, rounded ARCH shape (like a small
 dome or fountain-plume) that rises noticeably higher than the rim itself — make the height of this
@@ -187,7 +215,8 @@ numbers, or labels.
 鎖、という奥行きのある構図になっているか(全部が同じ平面上に並んでいて奥行きが感じられない場合は再構成を
 検討)。矢印・力の図解・数値ラベルなど、まだ本文で説明していない仕組み(押し返す力)の要素が誤って
 紛れ込んでいないか確認。チェーンの粒が写実的な金属質感になっておらず、子ども向けの可愛いフラットな丸に
-なっているか確認。
+なっているか確認。**カップの中身が「ビーズの山盛り」になっているか(空に見えたら失敗)確認する**
+(1回目の生成でカップが空に見えた経緯があるため)。
 
 ---
 
