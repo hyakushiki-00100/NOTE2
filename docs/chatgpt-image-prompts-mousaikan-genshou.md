@@ -11,10 +11,19 @@ ChatGPTに貼り付けて行う。このドキュメントの作成者(illustrat
 | 成果物 | 状態 |
 |---|---|
 | プロフィールアイコン | 既存の `profile/icon.png`(500×500)をそのまま流用。**作り直さない** |
-| 記事カバー(`covers/mousaikan-genshou.png`) | 未生成。下記プロンプトをChatGPTに貼り付けて生成すること |
-| 解説イラスト1(`illustrations/mousaikan-tube-comparison.png`、太い管/細い管の水面比較) | 未生成 |
-| 解説イラスト2(`illustrations/mousaikan-nureseishitsu.png`、ガラス面/ロウ面の濡れ性対比) | 未生成 |
-| 解説イラスト3(`illustrations/mousaikan-shokubutsu.png`、植物の給水と蒸散の引っぱり) | 未生成 |
+| 記事カバー(`covers/mousaikan-genshou.png`) | ✅ 1回目の生成で目視上は合格(タイトル3行・タオルと木の構図とも問題なし)。ただし現時点では
+  画像ファイルへのアクセスができず保存未了(下記「既知の問題」参照) |
+| 解説イラスト1(`illustrations/mousaikan-tube-comparison.png`、太い管/細い管の水面比較) | ✅ 1回目の生成で目視上は合格(細い管の水面が明確に高く、取り違えなし)。保存未了 |
+| 解説イラスト2(`illustrations/mousaikan-nureseishitsu.png`、ガラス面/ロウ面の濡れ性対比) | ❌ 1回目の生成でロウ面側のラベルに「0はじかれる」という文字化けが発生。ラベル文言を
+  シンプルな2行構成に修正済み。再生成待ち |
+| 解説イラスト3(`illustrations/mousaikan-shokubutsu.png`、植物の給水と蒸散の引っぱり) | ❌ 1回目の生成で、プロンプト内の見出し語("LOW"・"BELOW"・"ABOVE"・"ONE"・番号"1)""2)")が
+  そのまま英単語として画像内に描画される不具合、および日本語ラベルの文字重複(文字化け)が発生。
+  プロンプトを見出し語を使わない自然文に全面的に書き直した。再生成待ち |
+
+**既知の問題(2026-09-14時点)**: この記事の画像はChatGPTで4枚とも生成されユーザーから共有されたが、
+この環境からアップロード画像ファイルへのアクセスができない状態が続いており、カバー・イラスト1は
+目視確認のみで保存(リポジトリへのコミット)ができていない。イラスト2・3は上記の不具合のため
+いずれにせよ再生成が必要。画像アクセスが復旧し次第、4枚とも(再生成分を含め)保存・ピクセル検証を行うこと。
 
 ---
 
@@ -172,6 +181,10 @@ for children, in the dark brown color (#483628).
 **重要(取り違え防止)**: ガラス面=水が壁にくっついて広がる(濡れ性が高い)。ロウ面=水が玉になってはじかれる
 (濡れ性が低い)。左右どちらに配置してもよいが、ラベルと形状の対応を絶対に逆にしないこと。
 
+**改訂履歴**: 1回目の生成でロウ面側のラベルに「0はじかれる」のような余分な文字が混入する文字化けが
+発生した。ラベルの文中に丸括弧や記号を詰め込みすぎると崩れやすい可能性を考え、ラベルをより短く
+シンプルな2行構成に分割した。
+
 ```
 A single illustration, flat warm children's picture-book style, divided into two side-by-side panels
 on a shared cream background, each panel showing a flat horizontal surface viewed from a slight angle
@@ -181,12 +194,16 @@ LEFT PANEL: a smooth, pale, slightly bluish flat surface representing glass (lig
 with a thin dark brown outline suggesting a glass panel). On top of it, a puddle of water spreads out
 thin and wide, with its edges gently curving UP where they meet the surface (like the water is
 clinging to and climbing the surface slightly at its edges), showing the water "wants" to stick to
-and spread across the glass. Label below this panel in Japanese: "ガラス:くっつきたがる(濡れ性が高い)".
+and spread across the glass. Below this panel, add two short separate Japanese caption lines,
+stacked vertically, in plain text with no brackets or parentheses: first line "ガラス", second line
+"水がくっつきたがる".
 
 RIGHT PANEL: a flat surface with a warm terracotta-orange (#E08454) glossy-looking coating,
 representing a wax-coated surface. On top of it, the water forms a single small, neat, ROUND bead
 (like a marble), sitting up high with a narrow point of contact with the surface, clearly not
-spreading out at all. Label below this panel in Japanese: "ロウを塗った面:はじかれる(濡れ性が低い)".
+spreading out at all. Below this panel, add two short separate Japanese caption lines, stacked
+vertically, in plain text with no brackets or parentheses: first line "ロウを塗った面", second line
+"水がはじかれる".
 
 CRITICAL for shape: the LEFT panel's water must be spread thin and wide with edges curving up
 (clinging to the surface); the RIGHT panel's water must be a compact round bead barely touching the
@@ -200,7 +217,8 @@ for children, in the dark brown color (#483628).
 
 **生成後の確認ポイント**: 左パネル(ガラス)で水が薄く広がり、縁が持ち上がるように表現されているか。
 右パネル(ロウ面)で水が丸い玉になっているか。**左=広がる・右=玉になる、の対応が逆になっていないか**
-(逆なら失敗、作り直す)。ラベルの文言(「くっつきたがる」「はじかれる」)が本文の言葉と一致しているか。
+(逆なら失敗、作り直す)。**ラベルの文字が崩れていないか(余分な数字・記号が紛れ込んでいないか)拡大して
+必ず確認する**(1回目の生成で「0はじかれる」のような文字化けが発生した経緯があるため)。
 
 ---
 
@@ -222,44 +240,58 @@ for children, in the dark brown color (#483628).
 構図にする。本文にない具体的な数値(何メートル、何%等)は書き加えない。使ってよい目安は本文にある
 「数メートルほど」という言葉のみ(具体的な数字を新たに書き込まない)。
 
+**改訂履歴**: 1回目の生成で、プロンプト内の見出し語("BOTTOM"、"BELOW"、"ABOVE"、"ONE"、番号付き
+リストの"1)"「2)")が、そのまま英単語として画像内にテキスト描画されてしまう不具合が起きた。
+また日本語ラベルの一部も「持ち上がる高で持ち上がる高さ」のように重複した文字化けが生じた。
+今回はプロンプトを箇条書き・見出し語を使わない自然な説明文に全面的に書き直し、画像内に描画してよい
+テキストは明示的に列挙したラベルのみである旨を強調した。
+
 ```
 A single tall illustration, flat warm children's picture-book style, showing a cutaway cross-section
-of the ground and a very tall tree, from its roots at the bottom to its leafy top reaching toward the
-upper edge of the image.
+of the ground and a very tall tree, from its roots near the bottom edge of the image to its leafy top
+near the upper edge.
 
-At the BOTTOM: simple roots drawn in warm brown, spreading into the cream-colored ground, with a few
-small light-teal wavy lines representing water in the soil being drawn up into the roots.
+Near the bottom of the image, draw simple roots in warm brown, spreading into the cream-colored
+ground, with a few small light-teal wavy lines representing water in the soil being drawn up into the
+roots. From the roots, a single simple vertical tube runs straight up through the center of the trunk,
+representing the 道管 (water-carrying tube), filled with a continuous light-teal color all the way up
+to the top of the tree, representing an unbroken column of water.
 
-From the roots, draw ONE simple vertical tube running straight up through the center of the trunk,
-representing the 道管 (water-carrying tube). Fill the inside of this tube with a continuous light-teal
-color from the bottom all the way up to the top of the tree, representing an unbroken column of water.
+A short horizontal dashed line crosses the tube near the bottom of the trunk, close to the roots and
+far below the halfway point of the tree's total height — this dashed line marks a boundary between two
+visually different sections of the water column, described below.
 
-Divide this tube into two clearly distinct labeled zones with a horizontal dashed line marking the
-boundary, placed at a LOW point on the trunk — only a small fraction of the total trunk height (well
-below the halfway point), NOT anywhere near the leafy top:
-1) BELOW the dashed line (the small lower portion, from the roots up to the dashed line): draw a few
-   small upward arrows in deep teal along the tube. Attach a leader line from this lower zone to a
-   label box in Japanese reading: "毛細管現象で持ち上がる高さ:数メートルほど(道管の太さで決まる)".
-2) ABOVE the dashed line (the large remaining portion, from the dashed line all the way up through the
-   rest of the tall trunk to the very top leaves): draw the water column as a chain of small connected
-   circles/dots linked by short connecting lines (like a beaded chain), representing water molecules
-   holding onto each other. Attach a leader line from this upper zone to a label box in Japanese
-   reading: "蒸散の『引っぱり』+ 水分子どうしの『結びつき』で、ここまで運ばれる".
+In the short section of the tube between the roots and this dashed line, draw a few small upward
+arrows in deep teal along the water column. Place a small Japanese label next to this short section,
+connected to it with a thin leader line, reading exactly: "毛細管現象で持ち上がる高さ 数メートルほど".
 
-At the TOP of the tree, draw simple rounded leaves in deep teal. Near a few leaves, draw small, gentle
-upward-curving wavy lines in light teal drifting away from the leaf surface into the air, representing
-water vapor leaving through tiny pores, with a small label in Japanese: "葉から水蒸気が出ていく(蒸散)".
-Draw one small upward arrow right at the top of the beaded water chain, touching the base of these
-wavy vapor lines, showing the vapor loss is what pulls the water chain upward from above.
+In the long section of the tube above the dashed line, continuing all the way up through the rest of
+the tall trunk to the very top leaves, draw the water column as a chain of small connected circles
+linked by short connecting lines (like a beaded chain), representing water molecules holding onto each
+other. Place a small Japanese label next to this long section, connected to it with a thin leader
+line, reading exactly: "蒸散の引っぱりと水分子どうしの結びつきで、ここまで運ばれる".
 
-CRITICAL for proportions: the tree must be drawn tall enough, and the dashed boundary line low enough
-on the trunk, that it is visually obvious the "毛細管現象" zone covers only a small bottom fraction of
-the tree's total height, while the "蒸散の引っぱり＋水分子の結びつき" zone covers the large majority of
-the height, all the way to the top. Do not place the dashed boundary line near the middle or top of the
-tree, and do not make the two zones similar in size.
+Near the top of the tree, draw simple rounded leaves in deep teal. Near a few leaves, draw small,
+gentle upward-curving wavy lines in light teal drifting away from the leaf surface into the air,
+representing water vapor leaving through tiny pores, with a small Japanese label reading exactly:
+"葉から水蒸気が出ていく". Draw one small upward arrow right at the top of the beaded water chain,
+touching the base of these wavy vapor lines, showing the vapor loss is what pulls the water chain
+upward from above.
 
-Add one small caption near the top of the whole image, in Japanese: "毛細管現象だけでなく、蒸散の引っぱりと
-水分子の結びつきが合わさって、高いところまで水が届く".
+The tree must be drawn tall, with the dashed boundary line placed low on the trunk, so it is visually
+obvious that the short lower section (with the upward arrows) covers only a small bottom fraction of
+the tree's total height, while the long upper section (with the beaded chain) covers the large
+majority of the height, all the way to the top. Do not place the dashed boundary line near the middle
+or top of the tree, and do not make the two sections similar in size.
+
+Add one small caption near the top of the whole image, in Japanese, reading exactly: "毛細管現象だけで
+なく、蒸散の引っぱりと水分子の結びつきが合わさって、高いところまで水が届く".
+
+The only text allowed anywhere in this image is: the four Japanese labels and the one Japanese caption
+quoted above, plus the single word "道管" as a label pointing to the tube. Do not add any other words,
+letters, numbers, or English text anywhere in the image — no section headers, no "top"/"bottom" markers,
+no numbering. Every piece of text in the final image must be one of the exact Japanese phrases listed
+above, nothing else.
 
 [共通スタイル指定を貼り付け]
 All Japanese text must be crisp, correctly formed characters (not garbled), large and easy to read for
@@ -268,10 +300,14 @@ similar to a picture book's cutaway illustration of a tree.
 ```
 
 **生成後の確認ポイント**:
+- **"LOW"「BELOW」「ABOVE」「ONE」等の英単語や、"1)"「2)」のような番号が、画像内にそのまま文字として
+  描き込まれていないか拡大して確認する**(1回目の生成でプロンプトの見出し語が誤って画像内テキストとして
+  描画される不具合が起きたため、最優先で確認すること。混入していたら失敗、作り直す)。
 - 図が「毛細管現象だけで説明が完結する」ように見えていないか(最重要)。点線の境界線が幹の**低い位置**に
   あり、「毛細管現象」ゾーンが木全体の高さのうちごく一部(明らかに半分未満)にとどまっているか。
 - 境界線より上の大部分が、水分子の鎖(結びつき)の表現と、葉の蒸散(水蒸気が出ていく矢印・波線)による
   「引っぱり」の表現で占められているか。
+- 日本語ラベルの文字が重複・崩れていないか(「持ち上がる高で持ち上がる」のような文字化けが無いか)拡大して確認する。
 - 本文にある「数メートルほど」という言葉以外に、具体的な数値(高さの数字・パーセンテージ等)を新たに
   書き加えていないか。
 - 根→道管→葉、という水の通り道が一本の連続した管として描かれ、水の連続性(ちぎれていない一本の糸のような
