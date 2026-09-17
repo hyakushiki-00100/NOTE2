@@ -15,7 +15,10 @@
 | 記事カバー | ❌ 2回のOpus精査で不合格(旧タイトル文字列・YouTube風アイコン・縁付近の描画崩れ・カップ中身が
   飲み物に見える)に加え、3回目はGemini側で連続生成が不安定になり画像を確保できず。プロンプトを
   必須条件だけに絞った簡略版に書き直し済み。再生成待ち(`covers/kusari-no-funsui.png`) |
-| 解説イラスト1(カップから鎖が噴水のように盛り上がる図) | ✅ 生成済み・保存済み、Opus精査で合格(`illustrations/kusari-no-funsui-01.png`、1200×655) |
+| 解説イラスト1(カップから鎖が噴水のように盛り上がる図) | ❌ 保存済みだった版は「カップ中身が空」の
+  古い版と判明(要再確認)。新たに送られた再生成版は中身のビーズ山盛りは改善されたが、(a) ビーズの隙間から
+  カップ内側がティール色で覗き液体のように見える、(b) 鎖が二重ループで交差し歪んで見える、の2点が新たに
+  見つかった。プロンプトを修正済み。再生成待ち(`illustrations/kusari-no-funsui-01.png`) |
 | 解説イラスト2(山積みのリンクが押し返す力の図解) | ❌ Opus精査で不合格(矢印修正の消し跡が残っていた、持ち上がる部分が
   粒感の無い滑らかな線でイラスト1との統一性が無かった)。プロンプトを修正済み。再生成待ち
   (`illustrations/kusari-no-funsui-02.png`) |
@@ -155,33 +158,45 @@ the cup illustration below.
   だけを描く。
 - 高さ・角度の具体的な数値は本文に無いため書き込まない。
 
-**改訂履歴**: 1回目の生成でカップの中身が空(何も入っていない)に見え、本文6行目の「カップに山盛りに
-入れて」という設定と食い違っていた。今回はカップの中に、ビーズが山盛りになっている様子を明示的に
-描くよう指示を追加した。
+**改訂履歴**:
+- 1回目の生成でカップの中身が空(何も入っていない)に見え、本文6行目の「カップに山盛りに
+  入れて」という設定と食い違っていた。ビーズが山盛りになっている様子を明示的に描くよう指示を追加した。
+- 2回目の生成で、(a) ビーズの隙間からカップ内側の縁がディープティール色で覗き、「ティール色の
+  液体にビーズが浮いている」ように見えた、(b) 鎖が自分自身と交差する二重ループになっており、
+  交差点でビーズが不自然に重なって歪んで見えた。今回は①カップ内側の見える面もクリーム系の色にする
+  ②アーチは交差の無い単純な1回だけの弧にする、という指示を追加した。
 
 ```
 A single illustration, flat warm children's book style, on a cream background (#FBF3E4).
 Composition (front-to-back): in the FOREGROUND (lower-center of the image), a simple, friendly
 cream-colored cup (plain round cup or mug, no brand marks) sits on a simple flat tabletop surface.
-Fill the inside of the cup, right up to the rim, with a small mound of the same small round
-terracotta-orange (#E08454) beads used in the chain — many individual bead circles piled up together,
-clearly readable as "a cup filled with a pile of small beads," not empty and not a smooth solid color.
+The visible inner rim/wall of the cup (any part of the cup's inside surface that might peek between or
+behind the beads) must be the SAME cream/tan color family as the cup's outside (#FBF3E4 or a slightly
+darker warm tan) — NEVER deep teal or any other color, so nothing behind the beads could be mistaken
+for colored liquid. Fill the inside of the cup, right up to the rim, with a small mound of the same
+small round terracotta-orange (#E08454) beads used in the chain — many individual bead circles piled
+up together, clearly readable as "a cup filled with a pile of small beads," not empty, not a smooth
+solid color, and with no other color visible peeking through the gaps between beads.
 
 Rising from this pile of beads inside the cup and spilling over its rim, draw a single continuous,
 cute, flat cartoon ball chain — a row of small connected round beads, terracotta orange (#E08454) with
 a warm brown (#483628) outline, all beads the same small size as each other. This must be a single
-unbroken strand with no side-branches or disconnected bead shapes anywhere near the rim.
+unbroken strand with no side-branches or disconnected bead shapes anywhere near the rim, and the chain
+must NOT cross over or loop back through itself anywhere (no self-intersections, no figure-eight or
+double-loop shapes) — keep its path simple so no beads overlap each other at a crossing point.
 
-Just above the rim of the cup, the chain must form a clear, smooth, rounded ARCH shape (like a small
-dome or fountain-plume) that rises noticeably higher than the rim itself — make the height of this
-arch, from the rim up to the top of the arch, roughly 2 to 3 times the diameter of a single bead, so
-it reads as a distinct "popping up" bump rather than the chain merely resting flat on the rim.
+Just above the rim of the cup, the chain must form ONE single clear, smooth, rounded ARCH shape (like a
+small dome or fountain-plume, a simple single hump — not a double hump, not a loop) that rises
+noticeably higher than the rim itself — make the height of this arch, from the rim up to the top of the
+arch, roughly 2 to 3 times the diameter of a single bead, so it reads as a distinct "popping up" bump
+rather than the chain merely resting flat on the rim.
 
-From the top of this arch, the chain then curves downward and outward on the far side of the cup, and
-continues down and slightly further back in the scene (smaller and slightly higher up in the frame, to
-suggest it is further away / already falling), trailing off toward the lower-back area of the image —
-this represents "手前にカップ、盛り上がった弧、奥に落ちていく鎖" (foreground: cup, middle: the raised
-arch, background: the falling chain continuing down and away).
+From the top of this single arch, the chain then curves downward and outward on the far side of the
+cup, and continues down and slightly further back in the scene (smaller and slightly higher up in the
+frame, to suggest it is further away / already falling), trailing off toward the lower-back area of the
+image — this represents "手前にカップ、盛り上がった弧、奥に落ちていく鎖" (foreground: cup, middle: the
+raised arch, background: the falling chain continuing down and away). The path from pile → arch → falling
+tail must be ONE smooth continuous curve with no crossings.
 
 Do not draw any arrows, force diagrams, numbers, or angle marks in this image — it is a plain, charming
 depiction of the moment the chain "fountains" above the rim, nothing more.
@@ -197,7 +212,10 @@ numbers, or labels.
 検討)。矢印・力の図解・数値ラベルなど、まだ本文で説明していない仕組み(押し返す力)の要素が誤って
 紛れ込んでいないか確認。チェーンの粒が写実的な金属質感になっておらず、子ども向けの可愛いフラットな丸に
 なっているか確認。**カップの中身が「ビーズの山盛り」になっているか(空に見えたら失敗)確認する**
-(1回目の生成でカップが空に見えた経緯があるため)。
+(1回目の生成でカップが空に見えた経緯があるため)。**ビーズの隙間からカップ内側がティール等ビーズ以外の
+色で覗いていないか(液体のように見えたら失敗)確認する**。**アーチが二重ループ・自己交差になっておらず、
+単純な1つの弧になっているか(交差点でビーズが不自然に重なっていたら失敗)確認する**(2回目の生成でこの
+2点が見つかった経緯があるため)。
 
 ---
 
@@ -320,6 +338,8 @@ image height/width) around all four edges so nothing touches the border.
       それ以下なら失敗)
 - [ ] イラスト1: 手前にカップ、盛り上がった弧、奥に落ちていく鎖、という奥行きのある構図になっているか確認
 - [ ] イラスト1: 矢印・力の図解・数値ラベルが紛れ込んでいないか確認(現象の見た目のみを描く図であること)
+- [ ] イラスト1: ビーズの隙間からティール等の色が覗いて液体のように見えていないか確認
+- [ ] イラスト1: 鎖が二重ループ・自己交差になっておらず単純な1つの弧になっているか確認
 - [ ] イラスト2: 矢印が「山の表面 → 持ち上がるリンク」の向きになっているか確認(逆向き・曖昧なら失敗)
 - [ ] イラスト2: 山の大きさがリンク1粒よりも明らかに大きい(目安6〜8倍程度)か確認
 - [ ] イラスト2: 引き上げられるリンクの軌跡がまっすぐでなくカーブを描いているか確認
