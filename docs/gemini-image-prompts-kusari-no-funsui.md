@@ -16,10 +16,11 @@
   (影無し)すべて確認済み(`covers/kusari-no-funsui.png`、1280×670) |
 | 解説イラスト1(カップから鎖が噴水のように盛り上がる図) | ✅ 生成・保存・確認済み
   (`illustrations/kusari-no-funsui-01.png`、1200×655)。液体様の覗き色・二重ループとも解消。 |
-| 解説イラスト2(山積みのリンクが押し返す力の図解) | ✅ 生成・保存・確認済み(`illustrations/kusari-no-funsui-02.png`、
-  1200×655)。矢印の向き・消し跡・粒感の統一いずれも問題なし |
+| 解説イラスト2(山積みのリンクが押し返す力の図解) | ❌ 3回目のOpus精査で不合格(容器の左壁がラベル文字と
+  交差し、短い縦棒だけが宙に浮いて残る描画崩れ)。プロンプトを修正済み(ラベルを外形線と重ねない位置に
+  移動)。再生成待ち(`illustrations/kusari-no-funsui-02.png`) |
 
-3点とも生成完了。次は Opus QA(`note-qa`)による最終精査。
+カバー・イラスト1は3回目のOpus精査でPASS済み。イラスト2のみ再生成が必要。
 
 生成後、下記「生成後のチェックリスト」に沿って検証し、Opus QA(`note-qa`)にかけること。
 
@@ -246,12 +247,16 @@ numbers, or labels.
 
 ## 3. 解説イラスト2: 山積みのリンクが押し返す力の図解(本文L36の📎マーカー該当)
 
-**改訂履歴**: 1回目の生成物は、(a) 矢印の向きが「リンク→山」に見える誤った向きだったため画像編集で
-消去・再描画したが、消去跡がうっすら残っていた、(b) 持ち上げられているリンクが、粒感のない滑らかな
-オレンジの線(チューブ状)として描かれており、解説イラスト1の「小さな丸いビーズが連なった鎖」という
-統一デザインと矛盾し、山と同じ「くさり」であることが伝わらなかった、という2つの問題が見つかった。
-今回はゼロから再生成し、矢印の向きと、くさりの見た目の統一(山も持ち上がる部分も、同じ丸いビーズが
-つながった鎖であること)の両方を満たすようにする。
+**改訂履歴**:
+- 1回目の生成物は、(a) 矢印の向きが「リンク→山」に見える誤った向きだったため画像編集で
+  消去・再描画したが、消去跡がうっすら残っていた、(b) 持ち上げられているリンクが、粒感のない滑らかな
+  オレンジの線(チューブ状)として描かれており、解説イラスト1の「小さな丸いビーズが連なった鎖」という
+  統一デザインと矛盾し、山と同じ「くさり」であることが伝わらなかった、という2つの問題が見つかった。
+  ゼロから再生成し、矢印の向きと、くさりの見た目の統一の両方を満たすようにした(この修正は合格)。
+- 3回目のOpus精査で新たな不具合が見つかった: (c) 容器の左壁のラインが「山(たくさんのリンクが
+  積み重なったところ)」というラベル文字と交差しており、文字の背後で壁が途切れ、短い縦棒だけが
+  宙に浮いて残っている(右壁は上から下まで連続しているのに左だけ非対称に途切れている)。今回は
+  ラベルを容器の外形線と重ならない位置に離して配置するよう明記した。
 
 本文該当箇所(「カップの中のリンクは、山になって積み重なっています。そこから一粒が引っ張られると、その
 リンクはまっすぐ上ではなく、カーブを描くように向きを変えながら持ち上がります。このとき、下にある山の
@@ -284,6 +289,10 @@ numbers, or labels.
 A single illustration, flat warm children's book style, on a cream background (#FBF3E4). Show a
 simple cross-section / cutaway side view of a cup (a plain rounded container outline in dark brown
 #483628, open at the top, no need to draw the far wall — a simple U-shaped cup outline is enough).
+This U-shaped outline (both the left wall, the bottom curve, and the right wall) must be drawn as ONE
+single unbroken continuous line from the top of the left wall, around the bottom, to the top of the
+right wall — no gaps, no breaks, and nothing (including any text label) may overlap or cross through
+this outline anywhere. Keep both walls visually symmetric in how continuous they are.
 
 Inside the cup, draw a large mound (a pyramid/triangular pile shape) made up of MANY small round beads
 (deep teal #3A6960 with dark brown #483628 outlines), each bead touching its neighbors, packed closely
@@ -314,8 +323,10 @@ the first orange bead — i.e., the arrow visually originates from the pile and 
 its own departing direction, and must NOT point back toward the peak of the mound or in any direction
 other than the chain's own outward path. Label this arrow with small Japanese text next to it: "押し返す力".
 
-Add a small Japanese label near the mound pointing to it: "山(たくさんのリンクが積み重なったところ)".
-Add a small Japanese label near the orange bead: "持ち上げられるリンク".
+Add a small Japanese label for the mound: "山(たくさんのリンクが積み重なったところ)". Place this label
+OUTSIDE the cup's outline entirely (for example in the open space to the left of the cup, clear of the
+left wall line), connected to the mound by a short thin leader line if needed — the label text itself
+must never touch or overlap the cup's outline. Add a small Japanese label near the orange bead: "持ち上げられるリンク" (also positioned so it does not overlap the cup outline).
 Do not write any numbers (no force values, no angles, no lengths) anywhere in this image — only the
 Japanese text labels listed above are allowed.
 Flat, warm, friendly children's educational illustration style (like a Japanese picture book for
@@ -347,6 +358,8 @@ image height/width) around all four edges so nothing touches the border.
 - **持ち上がっていく部分が、山と同じ「丸いビーズが連なった鎖」に見えるか確認する**(滑らかな線・チューブ状に
   なっていて粒感が無い場合は失敗。イラスト1の鎖と同じ見た目の統一性が必要)。
 - 矢印の周辺(特に元の矢印があった位置)に、消し跡・薄い影のような残留物が無いか、拡大して確認する。
+- **容器の外形線(左右の壁・底)が、ラベル文字と交差して途切れていないか確認する**(左右で連続性が
+  非対称になっていたら失敗。3回目の生成で左壁がラベル文字の背後で途切れていた経緯があるため)。
 
 ---
 
