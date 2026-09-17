@@ -22,7 +22,10 @@ Opus QA(`note-qa`)にかけること。
 
 ---
 
-## 共通スタイル指定(毎回のプロンプト冒頭に付けると絵柄が揃います)
+## 共通スタイル指定
+
+以下の各プロンプトには**あらかじめ本文中に埋め込み済み**なので、コピペ時に別途貼り付ける必要はありません
+(参考として内容だけここに残しています)。
 
 ```
 Flat, warm, friendly children's educational illustration style (like a Japanese picture book for
@@ -71,7 +74,16 @@ from the queue — a small, quiet visual hint that not everyone reacts to a crow
 this figure and its arrow small and subordinate; the queue in front of the store must remain the
 single main visual focus of the illustration.
 
-[共通スタイル指定を貼り付け]
+Flat, warm, friendly children's educational illustration style (like a Japanese picture book for
+elementary schoolers). Simple flat shapes, soft rounded corners, no photorealism, no realistic
+human faces. Clean vector-like line art with a warm brown outline (#483628). Color palette strictly
+limited to these six tones only: cream background (#FBF3E4), terracotta orange (#E08454, shadow
+#BF673C), deep teal (#3A6960, light teal #92B5AB), and dark brown outline/text (#483628). Do not
+introduce any other colors. Cheerful and gentle mood, appropriate for children. All people are drawn
+as simple, abstract, flat silhouette or icon-style figures (a rounded head shape + simple body shape),
+with NO realistic facial features, NO specific skin tone rendering, NO clothing details that would
+suggest a specific real culture, ethnicity, or real individual — these are generic, universal,
+picture-book-style human icons, interchangeable and simple like pictogram figures.
 
 Include a title at the top of the image in bold, clearly legible Japanese text:
 「行列に並びたくなるのはなぜ? 「バンドワゴン効果」には、正反対の心理にも名前がついている」.
@@ -147,7 +159,16 @@ only quantities in this illustration are the person-icon counts described above 
 and no numeral text should be written on the image itself (the growing count should be shown purely by
 drawing more or fewer simple person-icon figures, not by writing digits).
 
-[共通スタイル指定を貼り付け]
+Flat, warm, friendly children's educational illustration style (like a Japanese picture book for
+elementary schoolers). Simple flat shapes, soft rounded corners, no photorealism, no realistic
+human faces. Clean vector-like line art with a warm brown outline (#483628). Color palette strictly
+limited to these six tones only: cream background (#FBF3E4), terracotta orange (#E08454, shadow
+#BF673C), deep teal (#3A6960, light teal #92B5AB), and dark brown outline/text (#483628). Do not
+introduce any other colors. Cheerful and gentle mood, appropriate for children. All people are drawn
+as simple, abstract, flat silhouette or icon-style figures (a rounded head shape + simple body shape),
+with NO realistic facial features, NO specific skin tone rendering, NO clothing details that would
+suggest a specific real culture, ethnicity, or real individual — these are generic, universal,
+picture-book-style human icons, interchangeable and simple like pictogram figures.
 
 All Japanese text must be crisp, correctly formed characters (not garbled), large and easy to read for
 children, in the dark brown color (#483628). Leave a generous margin (at least 8% of the image
@@ -225,7 +246,16 @@ group despite the larger group being bigger.
 At the top of the whole image (above all three panels, with clear space below the very top edge — not
 touching it), include a short Japanese caption: "同じ「みんなの選択」を見ても、心の動きは人それぞれ".
 
-[共通スタイル指定を貼り付け]
+Flat, warm, friendly children's educational illustration style (like a Japanese picture book for
+elementary schoolers). Simple flat shapes, soft rounded corners, no photorealism, no realistic
+human faces. Clean vector-like line art with a warm brown outline (#483628). Color palette strictly
+limited to these six tones only: cream background (#FBF3E4), terracotta orange (#E08454, shadow
+#BF673C), deep teal (#3A6960, light teal #92B5AB), and dark brown outline/text (#483628). Do not
+introduce any other colors. Cheerful and gentle mood, appropriate for children. All people are drawn
+as simple, abstract, flat silhouette or icon-style figures (a rounded head shape + simple body shape),
+with NO realistic facial features, NO specific skin tone rendering, NO clothing details that would
+suggest a specific real culture, ethnicity, or real individual — these are generic, universal,
+picture-book-style human icons, interchangeable and simple like pictogram figures.
 
 All Japanese text must be crisp, correctly formed characters (not garbled), large and easy to read for
 children, in the dark brown color (#483628). Double-check before finalizing: Panel 1's label must say
