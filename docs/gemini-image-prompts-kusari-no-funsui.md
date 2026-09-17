@@ -13,12 +13,11 @@
 |---|---|
 | プロフィールアイコン | ✅ 既存の `profile/icon.png` をそのまま流用。作り直さない |
 | 記事カバー | ❌ 2回のOpus精査で不合格(旧タイトル文字列・YouTube風アイコン・縁付近の描画崩れ・カップ中身が
-  飲み物に見える)に加え、3回目はGemini側で連続生成が不安定になり画像を確保できず。プロンプトを
-  必須条件だけに絞った簡略版に書き直し済み。再生成待ち(`covers/kusari-no-funsui.png`) |
-| 解説イラスト1(カップから鎖が噴水のように盛り上がる図) | ❌ 保存済みだった版は「カップ中身が空」の
-  古い版と判明(要再確認)。新たに送られた再生成版は中身のビーズ山盛りは改善されたが、(a) ビーズの隙間から
-  カップ内側がティール色で覗き液体のように見える、(b) 鎖が二重ループで交差し歪んで見える、の2点が新たに
-  見つかった。プロンプトを修正済み。再生成待ち(`illustrations/kusari-no-funsui-01.png`) |
+  飲み物に見える)に加え、3回目はGemini側で連続生成が不安定になり画像を確保できず。簡略版プロンプトで
+  4回目を生成したところタイトル・ビーズ・アイコンは良好だったが、落ちていく鎖が床に着地して影までついて
+  しまった(まだ落下中に見えない)。プロンプトを再修正済み。再生成待ち(`covers/kusari-no-funsui.png`) |
+| 解説イラスト1(カップから鎖が噴水のように盛り上がる図) | ✅ 再修正版で生成・保存・確認済み
+  (`illustrations/kusari-no-funsui-01.png`、1200×655)。液体様の覗き色・二重ループとも解消。 |
 | 解説イラスト2(山積みのリンクが押し返す力の図解) | ❌ Opus精査で不合格(矢印修正の消し跡が残っていた、持ち上がる部分が
   粒感の無い滑らかな線でイラスト1との統一性が無かった)。プロンプトを修正済み。再生成待ち
   (`illustrations/kusari-no-funsui-02.png`) |
@@ -100,6 +99,11 @@ print(len(t))
 ②鎖は一本(枝分かれ禁止)、③縁より明確に高いアーチ、④右下へ落ちていく、⑤丸いアイコン(YouTube風禁止)、
 ⑥タイトル文言・6行の行分け。
 
+**(4回目の修正点)**: 3回目の簡略版で生成した画像は、タイトル・ビーズの山盛り・アイコンはすべて良好
+だったが、落ちていく鎖の先端が画面端まで届かず、床の上に完全な形で着地して影までついてしまい、
+「まだ落下中」ではなく「床に落ちて止まった」ように見えた。今回は、鎖が右端でフレームアウトする
+(=ビーズが画面端で切れる)こと、落ちていく鎖の下に影を描かないことを明記した。
+
 ```
 A wide horizontal illustration (16:8.4 ratio), flat warm children's picture-book style.
 
@@ -110,8 +114,13 @@ beads," never a smooth solid fill and never liquid.
 One single continuous chain of the same small round beads rises from this pile and goes over the rim.
 It is ONE unbroken strand only — no side-branches, no separate stray bead shapes anywhere near the rim
 or handle. Just above the rim it forms one smooth rounded arch that rises clearly higher than the rim
-itself (like a small fountain bump), then curves back down and trails off toward the lower-right edge
-of the image (not resting on the table — it keeps falling out of frame).
+itself (like a small fountain bump), then curves back down and trails diagonally toward the lower-right
+corner of the image. CRITICAL: the chain must visually run OFF the right edge of the canvas — the last
+bead must be cut off / cropped by the frame's right edge, mid-bead, with no visible end-cap, no
+tapering-off, and absolutely no ground shadow drawn under this falling chain anywhere (the cup itself
+may cast its own small shadow on the table, but the falling chain must NOT have a matching shadow
+ellipse under it, since that would make it look like it landed and stopped). The chain must clearly
+still be falling and exiting the picture, not resting on any surface.
 
 In one small upper corner, away from the cup and title, add one small plain teal (#3A6960) circle with
 a small triangle inside it — a generic "something is being watched/played" hint. Keep it a plain circle
@@ -334,6 +343,7 @@ image height/width) around all four edges so nothing touches the border.
 - [ ] カバー: 「再生ボタン」風アイコンが実在の動画プラットフォームのロゴを想起させる配色・形になっていないか、
       実在の人物・チャンネル名が描き込まれていないか確認
 - [ ] カバー: 押し返す力の矢印など、解説イラスト2の内容が紛れ込んでいないか確認
+- [ ] カバー: 落ちていく鎖が画面右端でフレームアウトしているか(床に完全な形で着地し影がついていたら失敗)確認
 - [ ] イラスト1: 鎖の盛り上がり(アーチ)がカップの縁より明確に高い位置にあるか確認(縁と同じ高さ・
       それ以下なら失敗)
 - [ ] イラスト1: 手前にカップ、盛り上がった弧、奥に落ちていく鎖、という奥行きのある構図になっているか確認
