@@ -26,7 +26,10 @@
 
 ---
 
-## 共通スタイル指定(毎回のプロンプト冒頭に付けると絵柄が揃います)
+## 共通スタイル指定
+
+このブランドの絵柄を揃えるための共通指定です。以下の各プロンプトには**あらかじめ本文中に埋め込み済み**
+なので、コピペ時に別途貼り付ける必要はありません(参考として内容だけここに残しています)。
 
 ```
 Flat, warm, friendly children's educational illustration style (like a Japanese picture book for
@@ -126,7 +129,14 @@ In one small upper corner, away from the cup and title, add one small plain teal
 a small triangle inside it — a generic "something is being watched/played" hint. Keep it a plain circle
 only (never a rounded rectangle or pill shape, to avoid resembling any real video app logo).
 
-[共通スタイル指定を貼り付け]
+Flat, warm, friendly children's educational illustration style (like a Japanese picture book for
+elementary schoolers). Simple flat shapes, soft rounded corners, no photorealism, no realistic
+human faces. Clean vector-like line art with a warm brown outline (#483628). Color palette limited
+to: cream background (#FBF3E4), terracotta orange (#E08454, shadow #BF673C), deep teal
+(#3A6960, light teal #92B5AB). Cheerful and gentle mood, appropriate for children.
+The ball chain (the toy/lamp-pull style chain made of small round beads) must be drawn as a cute,
+flat, cartoon row of simple connected circles (like a string of round candy beads) — NOT a
+photorealistic or metallic-looking chain. No chrome/silver shading, no photo texture on the beads.
 
 Title at the top, bold dark brown (#483628) Japanese text, laid out on exactly 6 lines:
 line 1: 「カップから鎖を落とすと、」
@@ -209,7 +219,14 @@ tail must be ONE smooth continuous curve with no crossings.
 
 Do not draw any arrows, force diagrams, numbers, or angle marks in this image — it is a plain, charming
 depiction of the moment the chain "fountains" above the rim, nothing more.
-[共通スタイル指定を貼り付け]
+Flat, warm, friendly children's educational illustration style (like a Japanese picture book for
+elementary schoolers). Simple flat shapes, soft rounded corners, no photorealism, no realistic
+human faces. Clean vector-like line art with a warm brown outline (#483628). Color palette limited
+to: cream background (#FBF3E4), terracotta orange (#E08454, shadow #BF673C), deep teal
+(#3A6960, light teal #92B5AB). Cheerful and gentle mood, appropriate for children.
+The ball chain (the toy/lamp-pull style chain made of small round beads) must be drawn as a cute,
+flat, cartoon row of simple connected circles (like a string of round candy beads) — NOT a
+photorealistic or metallic-looking chain. No chrome/silver shading, no photo texture on the beads.
 If any text is included, it must be limited to a short caption below the illustration, in Japanese, in
 the dark brown color (#483628): "カップの縁の上で、鎖がふわっと持ち上がる". Do not add any other text,
 numbers, or labels.
@@ -302,7 +319,14 @@ Add a small Japanese label near the mound pointing to it: "山(たくさんの�
 Add a small Japanese label near the orange bead: "持ち上げられるリンク".
 Do not write any numbers (no force values, no angles, no lengths) anywhere in this image — only the
 Japanese text labels listed above are allowed.
-[共通スタイル指定を貼り付け]
+Flat, warm, friendly children's educational illustration style (like a Japanese picture book for
+elementary schoolers). Simple flat shapes, soft rounded corners, no photorealism, no realistic
+human faces. Clean vector-like line art with a warm brown outline (#483628). Color palette limited
+to: cream background (#FBF3E4), terracotta orange (#E08454, shadow #BF673C), deep teal
+(#3A6960, light teal #92B5AB). Cheerful and gentle mood, appropriate for children.
+The ball chain (the toy/lamp-pull style chain made of small round beads) must be drawn as a cute,
+flat, cartoon row of simple connected circles (like a string of round candy beads) — NOT a
+photorealistic or metallic-looking chain. No chrome/silver shading, no photo texture on the beads.
 All Japanese text and labels must be crisp, correctly formed characters (not garbled), large and easy
 to read for children, in the dark brown color (#483628). Leave a generous margin (at least 8% of the
 image height/width) around all four edges so nothing touches the border.
