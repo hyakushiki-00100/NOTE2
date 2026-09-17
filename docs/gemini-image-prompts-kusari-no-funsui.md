@@ -12,8 +12,9 @@
 | 成果物 | 状態 |
 |---|---|
 | プロフィールアイコン | ✅ 既存の `profile/icon.png` をそのまま流用。作り直さない |
-| 記事カバー | ❌ Opus精査で不合格(タイトルを「見つけた」→「広めた」に変更したため文字列が古い。再生ボタン風
-  アイコンもYouTubeのロゴに酷似と指摘)。プロンプトを修正済み。再生成待ち(`covers/kusari-no-funsui.png`) |
+| 記事カバー | ❌ 2回のOpus精査で不合格(旧タイトル文字列・YouTube風アイコン・縁付近の描画崩れ・カップ中身が
+  飲み物に見える)に加え、3回目はGemini側で連続生成が不安定になり画像を確保できず。プロンプトを
+  必須条件だけに絞った簡略版に書き直し済み。再生成待ち(`covers/kusari-no-funsui.png`) |
 | 解説イラスト1(カップから鎖が噴水のように盛り上がる図) | ✅ 生成済み・保存済み、Opus精査で合格(`illustrations/kusari-no-funsui-01.png`、1200×655) |
 | 解説イラスト2(山積みのリンクが押し返す力の図解) | ❌ Opus精査で不合格(矢印修正の消し跡が残っていた、持ち上がる部分が
   粒感の無い滑らかな線でイラスト1との統一性が無かった)。プロンプトを修正済み。再生成待ち
@@ -90,60 +91,40 @@ print(len(t))
   形(角丸長方形)を模倣しない。
 - 具体的な高さ・角度・力の大きさの数値は本文に無いため、画像内に一切書き込まない(数値ラベル無し)。
 
+**(3回目・簡略版プロンプト)**: 前回までの版は指示が細かすぎて生成が不安定になっていた可能性があるため、
+絶対に外せない条件だけに絞った短い版に書き直した。削った指示: 「噴水」の見た目の詳細な奥行き描写、
+アイコンの説明の重複、数値を書くなという念押しの重複など。残した条件: ①ビーズの山盛り(飲み物に見えない)、
+②鎖は一本(枝分かれ禁止)、③縁より明確に高いアーチ、④右下へ落ちていく、⑤丸いアイコン(YouTube風禁止)、
+⑥タイトル文言・6行の行分け。
+
 ```
-A wide horizontal illustration (aspect ratio approximately 16:8.4), flat warm children's book style.
-In the lower-foreground area, a simple, friendly cream-colored cup (a plain round drinking cup or mug,
-no readable brand marks) sits on a small flat surface. Fill the inside of the cup, right up to the rim,
-with a small mound of the same small round terracotta-orange (#E08454) beads used in the chain — many
-individual bead circles piled up together, clearly readable as "a cup filled with a pile of small
-beads," not a smooth solid color fill and not liquid. This piled mound of beads is where the chain
-comes from.
+A wide horizontal illustration (16:8.4 ratio), flat warm children's picture-book style.
 
-From the top of this bead-filled cup, exactly ONE single continuous chain (a row of small connected
-round beads, same terracotta orange #E08454 with a warm brown #483628 outline) rises up and spills
-over the rim. This must be a single unbroken line with no side-branches, no dead-end stubs, and no
-separate disconnected bead shapes anywhere near the rim or handle — only one continuous strand of
-beads from the pile in the cup, up over the rim, and onward as described below.
+A simple cream-colored cup sits in the lower-center. Its inside is filled right up to the rim with a
+pile of many small round terracotta-orange (#E08454) beads — it must read as "a cup full of small
+beads," never a smooth solid fill and never liquid.
 
-Right above the rim, this chain forms a smooth, gentle arching loop that rises clearly above the
-height of the cup's rim — like a small fountain of beads hanging in mid-air — before curving back down
-along the outside of the cup and continuing down toward the lower-right corner of the image, trailing
-off and fading out near the bottom-right edge of the frame (implying it keeps falling further down,
-out of view, rather than resting on the same tabletop the cup sits on). Give a sense of the chain
-flowing continuously: cup in front, the bead-filled pile inside it, the arched "fountain" bump just
-above the rim, and the falling chain trailing down and off the edge of the image behind it. Do not
-write any numbers, angle marks, or measurement lines anywhere near the arch — this is a purely visual
-"look, it's popping up like a fountain!" illustration, not a diagram.
+One single continuous chain of the same small round beads rises from this pile and goes over the rim.
+It is ONE unbroken strand only — no side-branches, no separate stray bead shapes anywhere near the rim
+or handle. Just above the rim it forms one smooth rounded arch that rises clearly higher than the rim
+itself (like a small fountain bump), then curves back down and trails off toward the lower-right edge
+of the image (not resting on the table — it keeps falling out of frame).
 
-In one small, clearly secondary corner of the image (e.g. upper corner, away from the cup and the
-title text), include one small, simple PLAIN CIRCLE (a plain filled or outlined circle, NOT a rounded
-square or "pill" shape) in the deep teal color (#3A6960), with a simple small triangle shape inside it
-pointing to one side. This must read as a generic, abstract "something is playing/in motion" hint, not
-as a copy of any real video-platform logo — keep the outer shape a plain circle only, no rounded-corner
-rectangle, no card/badge shape, no readable brand name or channel name. It is only a small, subtle hint
-that "someone found this while filming/watching videos," and must remain visually secondary to the cup
-and chain.
+In one small upper corner, away from the cup and title, add one small plain teal (#3A6960) circle with
+a small triangle inside it — a generic "something is being watched/played" hint. Keep it a plain circle
+only (never a rounded rectangle or pill shape, to avoid resembling any real video app logo).
 
 [共通スタイル指定を貼り付け]
-Include a title at the top of the image in bold, clearly legible Japanese text: 「カップから鎖を落とすと、なぜか一瞬「噴水」になる? 「鎖の噴水現象」を広めたのは、物理学者ではなくユーチューバーだった」.
-CRITICAL — this title is 59 characters, similar in length to a past 58-character title that needed
-5 to 6 lines, so it must be laid out across 6 LINES (7 lines is also acceptable if 6 feels crowded)
-with a font size small enough to comfortably fit without crowding or overlapping the illustration
-below. Suggested balanced line breaks (6 lines):
+
+Title at the top, bold dark brown (#483628) Japanese text, laid out on exactly 6 lines:
 line 1: 「カップから鎖を落とすと、」
 line 2: 「なぜか一瞬「噴水」になる?」
 line 3: 「「鎖の噴水現象」を」
 line 4: 「広めたのは、」
 line 5: 「物理学者ではなく」
 line 6: 「ユーチューバーだった」
-Do not force this onto 2–4 lines, as the font would become too small to read comfortably or the text
-would overflow or overlap the illustration below. Leave a clear, generous empty margin between the
-very top edge of the image and the top of line 1's characters (at least 6% of the image height) — no
-part of any character may touch or be cropped by the top edge. The title text must be crisp, correctly
-formed Japanese characters and symbols (not garbled — pay special attention to the two separate nested
-「」quote pairs around 噴水 and around 鎖の噴水現象, and the "?" mark), in the dark brown color
-(#483628), positioned in the upper area with calm, uncluttered space behind it so it does not overlap
-the cup-and-chain illustration below.
+Leave at least 6% empty margin above line 1. Keep the title area calm and uncluttered, not overlapping
+the cup illustration below.
 ```
 
 **生成後の確認ポイント**: タイトルが「広めたのは」の文言で6〜7行に収まり、文字が窮屈になっていないか
