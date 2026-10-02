@@ -13,9 +13,9 @@
 | 成果物 | 状態 |
 |---|---|
 | プロフィールアイコン | ✅ 既存の `profile/icon.png`(500×500・正方形)をそのまま流用。作り直さない |
-| 記事カバー | 🔲 プロンプト作成済み・Gemini での生成待ち(`covers/bandwagon-koka.png` として保存予定) |
-| 解説イラスト1(行列に人が次々と加わっていく様子) | 🔲 プロンプト作成済み・生成待ち(`illustrations/bandwagon-01.png`) |
-| 解説イラスト2(バンドワゴン効果・スノッブ効果・アンダードッグ効果の3心理対比) | 🔲 プロンプト作成済み・生成待ち(`illustrations/bandwagon-02.png`) |
+| 記事カバー | ✅ 生成・保存済み(`covers/bandwagon-koka.png`、1280×670)。タイトル4行・一字一句一致を確認 |
+| 解説イラスト1(行列に人が次々と加わっていく様子) | ✅ 生成・保存済み(`illustrations/bandwagon-01.png`、1200×670)。生成画像にプロンプトの見出し語「STAGE 1/2/3」が英字で6か所描き込まれていたため、PILで背景色・矢印色で塗りつぶして除去した(再発防止のため見出し語を文章に書き換え済み)。人数は3→6→8人(指定は10人)だが増加は明確 |
+| 解説イラスト2(バンドワゴン効果・スノッブ効果・アンダードッグ効果の3心理対比) | ✅ 生成・保存済み(`illustrations/bandwagon-02.png`、1200×655)。パネル順・ラベルと図の対応はすべて正しい。多数派グループはパネル1・2が8人、パネル3が7人 |
 
 すべて未生成。生成後、下記「生成後のチェックリスト」に沿ってサイズ・内容をコードと目視で検証し、
 Opus QA(`note-qa`)にかけること。
@@ -134,15 +134,15 @@ horizontal stages from left to right within one continuous image (like a simple 
 single large arrow along the bottom running from left to right, labeled nowhere with numbers — just a
 plain arrow shape), to show a queue growing over time.
 
-STAGE 1 (left third of the image): a short line of exactly 3 simple flat person-icon silhouettes
+In the left third of the image, draw a short line of exactly 3 simple flat person-icon silhouettes
 standing together, all the SAME size and SAME simple style.
 
-STAGE 2 (middle third of the image): a longer line of exactly 6 simple flat person-icon silhouettes —
+In the middle third of the image, draw a longer line of exactly 6 simple flat person-icon silhouettes —
 the SAME simple style and SAME size as Stage 1's people (do not make them bigger or smaller) — with 1
 or 2 of them drawn slightly separated from the line with small motion-lines behind their feet, walking
 toward the back of the line, to show people actively joining.
 
-STAGE 3 (right third of the image): a long line of exactly 10 simple flat person-icon silhouettes,
+In the right third of the image, draw a long line of exactly 10 simple flat person-icon silhouettes,
 again the SAME size and SAME simple style as the previous two stages, with 2 more figures shown
 walking in from outside the line toward the back with motion-lines, still joining. Above this longest
 line, add a small simple thought-bubble (attached to one of the newly-arriving figures) containing a
