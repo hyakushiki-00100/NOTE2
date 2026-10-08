@@ -7,7 +7,7 @@
 　
 まるで干しぶどうみたいですよね。でも、しばらくすると、いつものつるつるの指にもどっています。
 　
-多くの人は「水を吸って、ふやけたからだ」と考えます。ところが、それだけでは説明がつかないことがあるんです。
+「水を吸って、ふやけたからだ」と思っていませんか。ところが、それだけでは説明がつかないことがあるんです。
 　
 実はこのしわには、「神経」が関わっています。指の中で何が起きているのか、一緒に見ていきましょう。
 　
@@ -17,9 +17,9 @@
 　
 しわしわになるのは、手や足の指先、手のひら、足の裏です。腕やおなかは同じようにお湯につかっていても、指先のようなしわにはなりません。
 　
-ただ水を吸ってふやけるだけなら、体じゅうの皮ふが同じようにしわになりそうですよね。不思議だと思いませんか。
+同じお湯につかっているのに、どうして指先だけなのでしょう。不思議だと思いませんか。
 　
-もう一つ、大事な手がかりがあります。1930年代に、イギリスの医師ルイスとピカリングが、ある観察を報告しました。
+大事な手がかりがあります。1930年代に、イギリスの医師ルイスとピカリングが、ある観察を報告しました。
 　
 手の神経が傷ついている人の指を、お湯につけて調べたのです。すると、その神経が受け持っている指だけ、しわができませんでした。
 　
@@ -105,7 +105,7 @@
 　
 ただ、調べたのは3人だけです。本当にだれでもそうなのかは、もっと多くの人で調べる必要があります。
 　
-次にお風呂に入ったら、指先を観察してみてください。前の日と同じ場所に、しわはできているでしょうか。
+次にお風呂に入ったら、指先を観察してみてください。前のときと同じ場所に、しわはできているでしょうか。
 　
 長湯でのぼせないように、気をつけてくださいね。
 　
@@ -128,6 +128,7 @@
 - German, G. K. & Laytin, R. (2025). "On the repeatability of wrinkling topography patterns in the fingers of water immersed human skin." Journal of the Mechanical Behavior of Biomedical Materials.(ニューヨーク州立大学の研究者情報データベース) https://researchconnect.suny.edu/en/publications/on-the-repeatability-of-wrinkling-topography-patterns-in-the-fing/
 - Science News Explores「After every soak, fingers wrinkle — and always the same way」 https://www.snexplores.org/article/after-every-soak-fingers-wrinkle-and-always-the-same-way
 - Popular Science「Your fingers wrinkle the same way every time they're in water」 https://www.popsci.com/science/fingers-wrinkle-same-pattern/
+- 米国議会図書館(Library of Congress)Everyday Mysteries「Why do fingers and toes wrinkle in the bathtub?」 https://www.loc.gov/everyday-mysteries/categories/biology-and-human-anatomy/item/why-do-fingers-and-toes-wrinkle-in-the-bathtub/
 　
 ※ この環境はネットワーク制約により、上記URLへの直接アクセス(WebFetch)が遮断されました。本文の内容は、検索エンジン(WebSearch)が返した要約・抜粋を複数の情報源で突き合わせて確認したもので、原文の一字一句までは確認できていません。
 　
@@ -143,9 +144,11 @@
 　
 ※ 「汗の出口から水が皮ふにしみこみ、皮ふの中の塩分のバランスが変わることが、きっかけだと考えられています」という部分は、Wilder-Smith らの論文で probably(おそらく)という形で示された説明です。確定した仕組みではないため、本文では「有力な説では」と書いています。
 　
-※ しわになるのが主に手や足の指先・手のひら・足の裏であることは、Wilder-Smith の総説や複数の科学解説記事で共通していました。本文の「腕やおなかは同じようにお湯につかっていても、指先のようなしわにはなりません」という比較は、これらの説明に基づく書き方です。
+※ しわになるのが主に手や足の指先・手のひら・足の裏であることは、Wilder-Smith の総説、Haseleu らの2014年の論文(しわができるのは毛の生えていない手足の皮ふと説明)、米国議会図書館の解説ページで共通していました。本文の「腕やおなかは同じようにお湯につかっていても、指先のようなしわにはなりません」という比較は、これらの説明に基づく書き方です。
 　
-※ 角質層が水を吸ってふくらむことが、昔はしわの主な原因と考えられていたことは、複数の科学解説記事で一致していました。2017年の研究(Sáez と Zöllner、Annals of Biomedical Engineering)は、実験ではなくコンピューターによるシミュレーションで、外側のふくらみと内側のちぢみが合わさるとしわができやすいことを示したものです。
+※ 角質層が水を吸ってふくらむことが、昔はしわの主な原因と考えられていたことは、米国議会図書館の解説ページで確認しました。このページ自体が、今もこの説明を中心に紹介しています。
+　
+※ 2017年の研究(Sáez と Zöllner、Annals of Biomedical Engineering)は、実験ではなくコンピューターによるシミュレーションで、外側のふくらみと内側のちぢみが合わさるとしわができやすいことを示したものです。
 　
 ※ この2017年の研究の結論は、ほかの研究で確かめられたかどうかまでは確認できませんでした。そのため本文では「今も研究が続いています」と書き、ふやけの関わりを断定していません。
 　
